@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Source.net.api.Database;
 
 namespace Source.net.api.Migrations
 {
     [DbContext(typeof(SourceNetContext))]
-    partial class SourceNetContextModelSnapshot : ModelSnapshot
+    [Migration("20191116022315_addMissingFieldsToUser")]
+    partial class addMissingFieldsToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Source.net.api.Database
 {
-    class SourceNetContext : DbContext
+    public class SourceNetContext : DbContext
     {
         public SourceNetContext(DbContextOptions<SourceNetContext> options)
            : base(options)
