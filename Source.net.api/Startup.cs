@@ -16,11 +16,29 @@ using Source.net.services.Repositories.Interfaces;
 using Source.net.services.Repositories.Implementations;
 using Source.net.services.Services.Interfaces;
 using Source.net.api.Filters;
+using System.Collections.Generic;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Source.net.api
 {
     public class Startup
     {
+        public class BasicAuthDocumentFilter : IDocumentFilter
+        {
+            public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
+            {
+                var securityRequirements = new Dictionary<string, IEnumerable<string>>(){
+                    {
+                        "bearer",
+                        new string[] { }
+                    }  
+                };
+
+                swaggerDoc.Security = new[] { securityRequirements };
+            }
+        }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -64,6 +82,33 @@ namespace Source.net.api
             services.AddSingleton<UserMapper>();
             services.AddSingleton<RoleMapper>();
 
+            var contact = Configuration.GetSection("Swagger").GetSection("Contact");
+            var license = Configuration.GetSection("Swagger").GetSection("License");
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info {
+                    Title = "Source.net api",
+                    Version = "v1",
+                    Contact = new Contact {
+                        Email = contact.GetSection("Email").Value,
+                        Name = contact.GetSection("Name").Value,
+                        Url = contact.GetSection("Url").Value
+                    },
+                    Description = "Api to use multiuser blog system",
+                    License = new License {
+                        Name = license.GetSection("Name").Value,
+                        Url = license.GetSection("Url").Value
+                    }
+                });
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+                c.DocumentFilter<BasicAuthDocumentFilter>();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,11 +117,17 @@ namespace Source.net.api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Source net API v1.0");
+                });
             }
             else
             {
                 app.UseHsts();
             }
+
 
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
