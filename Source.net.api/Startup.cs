@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Source.net.api.Database;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Source.net.api.Utils;
 using System.Text;
 using Source.net.api.Security;
-using Source.net.api.Repositories.Interfaces;
-using Source.net.api.Repositories.Implementations;
+using Source.net.services.Mappers;
+using Source.net.services.Database;
+using Source.net.services.Services.Implementations;
+using Source.net.services.Repositories.Interfaces;
+using Source.net.services.Repositories.Implementations;
+using Source.net.services.Services.Interfaces;
+using Source.net.api.Filters;
 
 namespace Source.net.api
 {
@@ -34,7 +31,9 @@ namespace Source.net.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(
+                x => x.Filters.Add<ErrorFilter>()
+            ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<SourceNetContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.Configure<TokenManagement>(Configuration.GetSection("tokenManagement"));
             var token = Configuration.GetSection("tokenManagement").Get<TokenManagement>();
@@ -59,8 +58,11 @@ namespace Source.net.api
                 };
             });
 
-            services.AddScoped<AuthenticationService, JWTAuthenticationService  >();
+            services.AddScoped<AuthenticationService, JWTAuthenticationService>();
             services.AddScoped<UserRepository, SqlServerUserRepository>();
+            services.AddScoped<UserService, UserServiceImp>();
+            services.AddSingleton<UserMapper>();
+            services.AddSingleton<RoleMapper>();
 
         }
 

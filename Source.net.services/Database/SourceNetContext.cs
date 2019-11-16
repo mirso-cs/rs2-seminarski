@@ -1,7 +1,7 @@
 ﻿using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Source.net.api.Database
+namespace Source.net.services.Database
 {
     public class SourceNetContext : DbContext
     {
@@ -10,6 +10,6 @@ namespace Source.net.api.Database
         {
         }
 
-        public virtual DbSet<User> Users{ get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

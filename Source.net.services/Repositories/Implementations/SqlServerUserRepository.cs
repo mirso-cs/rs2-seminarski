@@ -1,12 +1,10 @@
 ﻿using Infrastructure.Entities;
-using Source.net.api.Database;
-using Source.net.api.Repositories.Interfaces;
-using System;
+using Source.net.services.Database;
+using Source.net.services.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace Source.net.api.Repositories.Implementations
+namespace Source.net.services.Repositories.Implementations
 {
     public class SqlServerUserRepository : UserRepository
     {
@@ -17,6 +15,7 @@ namespace Source.net.api.Repositories.Implementations
         {
             _db = db;
         }
+
         public IEnumerable<User> GetAll()
         {
             return _db.Users.ToList();
@@ -32,6 +31,11 @@ namespace Source.net.api.Repositories.Implementations
             return _db.Users.Where(u => u.Username == username).FirstOrDefault();
         }
 
+        public User GetByEmail(string email)
+        {
+            return _db.Users.Where(u => u.Email == email).FirstOrDefault();
+        }
+
         public User SetToken(string username, string token)
         {
             var user = GetUserByUsername(username);
@@ -40,12 +44,42 @@ namespace Source.net.api.Repositories.Implementations
                 return null;
             }
             user.Token = token;
+            UpdateUser(user);
+            return user;
+        }
+
+        public User AddUser(User user)
+        {
+            _db.Users.Add(user);
+            _db.SaveChanges();
+            return user;
+        }
+
+        public User UpdateUser(User user)
+        {
             _db.Users.Attach(user);
             _db.Users.Update(user);
             _db.SaveChanges();
             return user;
         }
 
+        public User DeleteUser(int id)
+        {
+            return ToggleStatus(id, false);
+        }
 
+        public User ActivateUser(int id)
+        {
+            return ToggleStatus(id, true);
+        }
+
+        private User ToggleStatus(int id, bool active)
+        {
+            var user = GetUser(id);
+            user.Active = active;
+            user.Token = null;
+            UpdateUser(user);
+            return user;
+        }
     }
 }

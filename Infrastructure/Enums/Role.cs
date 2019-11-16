@@ -11,3 +11,4 @@ namespace Infrastructure.Enums
         USER
     }
 }
+ 

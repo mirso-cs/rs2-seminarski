@@ -1,14 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace Source.net.api.Requests
+namespace Infrastructure.Dtos
 {
-    public class LoginRequest
+    public class LoginDto
     {
         [Required]
         [JsonProperty("username")]
         public string Username { get; set; }
-
 
         [Required]
         [JsonProperty("password")]

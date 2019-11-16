@@ -19,6 +19,5 @@ namespace Source.net.api.Utils
 
         [JsonProperty("refreshExpiration")]
         public int RefreshExpiration { get; set; }
-
     }
 }
