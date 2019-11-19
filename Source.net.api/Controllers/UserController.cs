@@ -29,11 +29,11 @@ namespace Source.net.api.Controllers
         public IEnumerable<UserView> Get()
         {
             var authUser = getUser();
-            if(!authUser.isAdmin())
+            if (!authUser.isAdmin())
             {
                 throw new BadRequestException("User does not have permission for this action.");
             }
-            return _userService.getAll();
+            return _userService.GetAll();
         }
 
         [HttpGet]
@@ -45,7 +45,7 @@ namespace Source.net.api.Controllers
             {
                 throw new BadRequestException("User does not have permission for this action.");
             }
-            return _userService.getById(userId);
+            return _userService.Get(userId);
         }
 
         [AllowAnonymous]
@@ -77,7 +77,7 @@ namespace Source.net.api.Controllers
                 return BadRequest("Invalid Request");
             }
 
-            return Ok(_userService.register(request));
+            return Ok(_userService.Add(request));
         }
 
         [HttpGet]
@@ -96,16 +96,9 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Invalid Request");
             }
 
-            var authUser = getUser();
-            if (authUser.isAdmin())
+            if (isAuthorized(userId))
             {
-                return _userService.updateUser(userId, dto);
-            }
-
-            var user = _userService.getById(userId);
-            if (authUser.id == userId && user.Active)
-            {
-                return _userService.updateUser(userId, dto);
+                return _userService.Update(userId, dto);
             }
 
             throw new BadRequestException("User does not have permission for this action.");
@@ -120,16 +113,9 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Invalid Request");
             }
 
-            var authUser = getUser();
-            if (authUser.isAdmin())
+            if (isAuthorized(userId))
             {
-                return _userService.updatePassword(userId, dto);
-            }
-
-            var user = _userService.getById(userId);
-            if (authUser.id == userId && user.Active)
-            {
-                return _userService.updatePassword(userId, dto);
+                return _userService.UpdatePassword(userId, dto);
             }
 
             throw new BadRequestException("User does not have permission for this action.");
@@ -145,7 +131,7 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Invalid Request");
             }
 
-            return _userService.updateRole(userId, dto);
+            return _userService.UpdateRole(userId, dto);
         }
 
         [Authorize(Roles = "Super user")]
@@ -153,7 +139,7 @@ namespace Source.net.api.Controllers
         [Route("{userId}/restore")]
         public UserView RestoreUser(int userId)
         {
-            return _userService.activateUser(userId);
+            return _userService.ActivateUser(userId);
         }
 
         [HttpDelete]
@@ -165,16 +151,9 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Invalid Request");
             }
 
-            var authUser = getUser();
-            if (authUser.isAdmin())
+            if (isAuthorized(userId))
             {
-                return _userService.deleteUser(userId);
-            }
-
-            var user = _userService.getById(userId);
-            if (authUser.id == userId && user.Active)
-            {
-                return _userService.deleteUser(userId);
+                return _userService.Get(userId);
             }
 
             throw new BadRequestException("User does not have permission for this action.");
@@ -183,7 +162,15 @@ namespace Source.net.api.Controllers
         private UserView getUser()
         {
             var username = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).First()?.Value;
-            return _userService.getByUsername(username);
+            return _userService.GetByUsername(username);
+        }
+        private bool isAuthorized(int userId)
+        {
+            var authUser = getUser();
+            if (authUser.isAdmin())
+                return true;
+            var user = _userService.Get(userId);
+            return authUser.id == user.id && user.Active;
         }
     }
 }

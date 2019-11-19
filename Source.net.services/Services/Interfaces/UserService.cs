@@ -4,16 +4,12 @@ using System.Collections.Generic;
 
 namespace Source.net.services.Services.Interfaces
 {
-    public interface UserService
+    public interface UserService: 
+        BaseService<UserService, RegisterDto, UpdateUserDto, UserView>
     {
-        UserView register(RegisterDto dto);
-        UserView getByUsername(string username);
-        UserView getById(int id);
-        UserView updateUser(int userId, UpdateUserDto dto);
-        UserView updatePassword(int userId, UpdatePasswordDto dto);
-        UserView updateRole(int userId, UpdateRoleDto dto);
-        UserView deleteUser(int userId);
-        UserView activateUser(int userId);
-        IEnumerable<UserView> getAll();
+        UserView GetByUsername(string username);
+        UserView UpdatePassword(int userId, UpdatePasswordDto dto);
+        UserView UpdateRole(int userId, UpdateRoleDto dto);
+        UserView ActivateUser(int userId);
     }
 }

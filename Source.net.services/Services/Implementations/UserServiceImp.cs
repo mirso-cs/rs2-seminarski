@@ -5,110 +5,85 @@ using Infrastructure.Views;
 using Source.net.services.Mappers;
 using Source.net.services.Repositories.Interfaces;
 using Source.net.services.Services.Interfaces;
-using System.Collections.Generic;
 
 namespace Source.net.services.Services.Implementations
 {
-    public class UserServiceImp : UserService
+    public class UserServiceImp : 
+        BaseServiceImp<User, UserView, UserMapper, UserRepository, RegisterDto, UpdateUserDto>,
+        UserService
     {
-        private readonly UserMapper _userMapper;
-        private readonly UserRepository _userRepository;
 
-        public UserServiceImp(UserMapper userMapper, UserRepository userRepository)
+        public UserServiceImp(UserMapper userMapper, UserRepository userRepository): 
+            base(userMapper, userRepository)
         {
-            _userMapper = userMapper;
-            _userRepository = userRepository;
         }
 
-        public UserView getByUsername(string username)
+        public UserView GetByUsername(string username)
         {
-            var user = _userRepository.GetUserByUsername(username);
-            return _userMapper.ToView(user);
+            var user = _repo.GetUserByUsername(username);
+            return _mapper.From(user);
         }
 
-        public UserView register(RegisterDto dto)
+        public override UserView Add(RegisterDto dto)
         {
-            if (_userRepository.GetByEmail(dto.Email) != null)
+            if (_repo.GetByEmail(dto.Email) != null)
             {
                 throw new BadRequestException("Email already in use.");
             }
-            if (_userRepository.GetUserByUsername(dto.Username) != null)
+            if (_repo.GetUserByUsername(dto.Username) != null)
             {
                 throw new BadRequestException("Username already in use.");
             }
-            var user = _userMapper.To(dto);
-            _userRepository.AddUser(user);
-            return _userMapper.ToView(user);
+            return base.Add(dto);
         }
 
-        public UserView updateUser(int userId, UpdateUserDto dto)
+        public override UserView Update(int userId, UpdateUserDto dto)
         {
-            var user = _userRepository.GetUser(userId);
+            var user = _repo.Get(userId);
             if (user.Email != dto.Email
-                && _userRepository.GetByEmail(dto.Email) != null)
+                && _repo.GetByEmail(dto.Email) != null)
             {
                 throw new BadRequestException("Email already in use.");
             }
             if (user.Username != dto.Username
-                && _userRepository.GetUserByUsername(dto.Username) != null)
+                && _repo.GetUserByUsername(dto.Username) != null)
             {
                 throw new BadRequestException("Username already in use.");
             }
-
-            user = _userMapper.To(dto, user);
-            _userRepository.UpdateUser(user);
-            return _userMapper.ToView(user);
+            return base.Update(userId, dto);
         }
 
-        public UserView getById(int id)
-        {
-            var user = _userRepository.GetUser(id);
-            return _userMapper.ToView(user);
-        }
-
-        public UserView updatePassword(int userId, UpdatePasswordDto dto)
+        public UserView UpdatePassword(int userId, UpdatePasswordDto dto)
         {
             if (dto.PassowrdConfirmation != dto.Password)
             {
                 throw new BadRequestException("Passwords do not match.");
             }
-            var user = _userRepository.GetUser(userId);
+            var user = _repo.Get(userId);
             user.Password = dto.Password;
-            _userRepository.UpdateUser(user);
-            return _userMapper.ToView(user);
+            _repo.Update(user);
+            return _mapper.From(user);
         }
 
-        public UserView updateRole(int userId, UpdateRoleDto dto)
+        public UserView UpdateRole(int userId, UpdateRoleDto dto)
         {
-            var user = _userRepository.GetUser(userId);
+            var user = _repo.Get(userId);
             user.Role = dto.Role;
-            _userRepository.UpdateUser(user);
-            return _userMapper.ToView(user);
+            _repo.Update(user);
+            return _mapper.From(user);
         }
 
-        public UserView deleteUser(int userId)
+        public UserView DeleteUser(int userId)
         {
-            var user = _userRepository.DeleteUser(userId);
-            return _userMapper.ToView(user);
+            var user = _repo.Delete(userId);
+            return _mapper.From(user);
         }
 
-        public UserView activateUser(int userId)
+        public UserView ActivateUser(int userId)
         {
-            var user = _userRepository.ActivateUser(userId);
-            return _userMapper.ToView(user);
+            var user = _repo.ActivateUser(userId);
+            return _mapper.From(user);
         }
-
-        public IEnumerable<UserView> getAll()
-        {
-            IEnumerable<User> entities = _userRepository.GetAll();
-            List<UserView> users = new List<UserView>();
-            foreach (User user in entities)
-            {
-                users.Add(_userMapper.ToView(user));
-            }
-            return users;
-
-        }
-
+  
     }
 }

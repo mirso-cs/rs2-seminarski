@@ -5,7 +5,7 @@ using Infrastructure.Enums;
 
 namespace Source.net.services.Mappers
 {
-    public class UserMapper
+    public class UserMapper: Mapper<User, UserView, RegisterDto, UpdateUserDto>
     {
         private readonly RoleMapper _roleMapper;
         public UserMapper(RoleMapper roleMapper)
@@ -25,7 +25,6 @@ namespace Source.net.services.Mappers
                 Role = Role.USER
             };
         }
-
         public User To(UpdateUserDto dto, User entity)
         {
             if(entity is null)
@@ -39,8 +38,21 @@ namespace Source.net.services.Mappers
             entity.Username = dto.Username;
             return entity;
         }
-
-        public UserView ToView(User entity)
+        public User To(UserView view)
+        {
+            return new User
+            {
+                Active = view.Active,
+                Email = view.Email,
+                Name = view.Name,
+                Role = view.RoleId,
+                Surname = view.Surname,
+                Token = view.Token,
+                Username = view.Username,
+                Password = "HIDDEN"
+            };
+        }
+        public UserView From(User entity)
         {
             return new UserView
             {

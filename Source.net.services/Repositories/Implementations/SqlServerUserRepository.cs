@@ -1,29 +1,17 @@
 ﻿using Infrastructure.Entities;
 using Source.net.services.Database;
 using Source.net.services.Repositories.Interfaces;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Source.net.services.Repositories.Implementations
 {
-    public class SqlServerUserRepository : UserRepository
+    public class SqlServerUserRepository : MutatorRepository<User>, UserRepository
     {
 
-        private readonly SourceNetContext _db;
-
-        public SqlServerUserRepository(SourceNetContext db)
+        public SqlServerUserRepository(SourceNetContext db): 
+            base(db)
         {
-            _db = db;
-        }
 
-        public IEnumerable<User> GetAll()
-        {
-            return _db.Users.ToList();
-        }
-
-        public User GetUser(int id)
-        {
-            return _db.Users.Find(id);
         }
 
         public User GetUserByUsername(string username)
@@ -44,26 +32,11 @@ namespace Source.net.services.Repositories.Implementations
                 return null;
             }
             user.Token = token;
-            UpdateUser(user);
+            Update(user);
             return user;
         }
-
-        public User AddUser(User user)
-        {
-            _db.Users.Add(user);
-            _db.SaveChanges();
-            return user;
-        }
-
-        public User UpdateUser(User user)
-        {
-            _db.Users.Attach(user);
-            _db.Users.Update(user);
-            _db.SaveChanges();
-            return user;
-        }
-
-        public User DeleteUser(int id)
+        
+        public override User Delete(int id)
         {
             return ToggleStatus(id, false);
         }
@@ -75,10 +48,10 @@ namespace Source.net.services.Repositories.Implementations
 
         private User ToggleStatus(int id, bool active)
         {
-            var user = GetUser(id);
+            var user = Get(id);
             user.Active = active;
             user.Token = null;
-            UpdateUser(user);
+            Update(user);
             return user;
         }
     }

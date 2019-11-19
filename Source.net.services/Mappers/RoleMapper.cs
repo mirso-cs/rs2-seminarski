@@ -35,7 +35,5 @@ namespace Source.net.services.Mappers
             }
             throw new Exception("Undefined role.");
         }
-
-
     }
 }
