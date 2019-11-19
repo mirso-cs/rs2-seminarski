@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace Infrastructure.Dtos
+namespace Source.net.infrastructure.Dtos
 {
     public class UpdatePasswordDto
     {

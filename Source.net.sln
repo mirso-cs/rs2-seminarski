@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Source.net.api", "Source.net.api\Source.net.api.csproj", "{37604CD7-6EF2-48DE-8565-0D0AAAD6B92E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Source.net.api", "Source.net.api\Source.net.api.csproj", "{37604CD7-6EF2-48DE-8565-0D0AAAD6B92E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C3C50D52-C6E9-4752-9D82-9AE72D6D2A47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Source.net.infrastructure", "Source.net.infrastructure\Source.net.infrastructure.csproj", "{C3C50D52-C6E9-4752-9D82-9AE72D6D2A47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Source.net.services", "Source.net.services\Source.net.services.csproj", "{550D1AA2-5A20-4758-ABB9-7AE301F35A91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Source.net.services", "Source.net.services\Source.net.services.csproj", "{550D1AA2-5A20-4758-ABB9-7AE301F35A91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

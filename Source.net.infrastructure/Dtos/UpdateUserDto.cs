@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using Source.net.infrastructure.Enums;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace Infrastructure.Dtos
+namespace Source.net.infrastructure.Dtos
 {
-    public class RegisterDto
+    public class UpdateUserDto
     {
         [Required]
         [JsonProperty("name")]
@@ -20,9 +21,5 @@ namespace Infrastructure.Dtos
         [Required]
         [JsonProperty("username")]
         public string Username { get; set; }
-
-        [Required]
-        [JsonProperty("password")]
-        public string Password { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿using Infrastructure.Enums;
+﻿using Source.net.infrastructure.Enums;
 
-namespace Infrastructure.Views
+namespace Source.net.infrastructure.Views
 {
     public class UserView
     {

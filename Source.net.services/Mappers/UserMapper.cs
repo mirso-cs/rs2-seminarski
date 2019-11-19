@@ -1,7 +1,7 @@
-﻿using Infrastructure.Entities;
-using Infrastructure.Dtos;
-using Infrastructure.Views;
-using Infrastructure.Enums;
+﻿using Source.net.infrastructure.Entities;
+using Source.net.infrastructure.Dtos;
+using Source.net.infrastructure.Views;
+using Source.net.infrastructure.Enums;
 
 namespace Source.net.services.Mappers
 {

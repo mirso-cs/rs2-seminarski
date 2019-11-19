@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Infrastructure.Exceptions
+namespace Source.net.infrastructure.Exceptions
 {
     public class BadRequestException : Exception
     {

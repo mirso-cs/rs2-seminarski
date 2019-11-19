@@ -1,5 +1,5 @@
-﻿using Infrastructure.Dtos;
-using Infrastructure.Views;
+﻿using Source.net.infrastructure.Dtos;
+using Source.net.infrastructure.Views;
 using System.Collections.Generic;
 
 namespace Source.net.services.Services.Interfaces

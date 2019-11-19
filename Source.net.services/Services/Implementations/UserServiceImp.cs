@@ -1,7 +1,7 @@
-﻿using Infrastructure.Dtos;
-using Infrastructure.Entities;
-using Infrastructure.Exceptions;
-using Infrastructure.Views;
+﻿using Source.net.infrastructure.Dtos;
+using Source.net.infrastructure.Entities;
+using Source.net.infrastructure.Exceptions;
+using Source.net.infrastructure.Views;
 using Source.net.services.Mappers;
 using Source.net.services.Repositories.Interfaces;
 using Source.net.services.Services.Interfaces;

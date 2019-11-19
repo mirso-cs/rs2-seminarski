@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Enums
+namespace Source.net.infrastructure.Enums
 {
     public enum Role
     {

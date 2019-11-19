@@ -21,7 +21,7 @@ namespace Source.net.services.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Infrastructure.Entities.Category", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.Category", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -34,7 +34,7 @@ namespace Source.net.services.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.Comment", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.Comment", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace Source.net.services.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.Post", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.Post", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -88,7 +88,7 @@ namespace Source.net.services.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.PostTag", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.PostTag", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -107,7 +107,7 @@ namespace Source.net.services.Migrations
                     b.ToTable("PostTags");
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.Rating", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.Rating", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -128,7 +128,7 @@ namespace Source.net.services.Migrations
                     b.ToTable("Ratings");
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.Tag", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.Tag", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -141,7 +141,7 @@ namespace Source.net.services.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.User", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.User", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -168,58 +168,58 @@ namespace Source.net.services.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.Comment", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.Comment", b =>
                 {
-                    b.HasOne("Infrastructure.Entities.Comment", "Reply")
+                    b.HasOne("Source.net.infrastructure.Entities.Comment", "Reply")
                         .WithMany()
                         .HasForeignKey("CommentId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Infrastructure.Entities.Post", "Post")
+                    b.HasOne("Source.net.infrastructure.Entities.Post", "Post")
                         .WithMany()
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Infrastructure.Entities.User", "User")
+                    b.HasOne("Source.net.infrastructure.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.Post", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.Post", b =>
                 {
-                    b.HasOne("Infrastructure.Entities.Category", "Category")
+                    b.HasOne("Source.net.infrastructure.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Infrastructure.Entities.User", "User")
+                    b.HasOne("Source.net.infrastructure.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.PostTag", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.PostTag", b =>
                 {
-                    b.HasOne("Infrastructure.Entities.Post", "Post")
+                    b.HasOne("Source.net.infrastructure.Entities.Post", "Post")
                         .WithMany()
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Infrastructure.Entities.Tag", "Tag")
+                    b.HasOne("Source.net.infrastructure.Entities.Tag", "Tag")
                         .WithMany()
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.Rating", b =>
+            modelBuilder.Entity("Source.net.infrastructure.Entities.Rating", b =>
                 {
-                    b.HasOne("Infrastructure.Entities.Post", "Post")
+                    b.HasOne("Source.net.infrastructure.Entities.Post", "Post")
                         .WithMany()
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Infrastructure.Entities.User", "User")
+                    b.HasOne("Source.net.infrastructure.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

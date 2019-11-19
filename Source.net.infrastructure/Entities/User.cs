@@ -1,7 +1,7 @@
-﻿using Infrastructure.Enums;
+﻿using Source.net.infrastructure.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace Infrastructure.Entities
+namespace Source.net.infrastructure.Entities
 {
     public class User
     {

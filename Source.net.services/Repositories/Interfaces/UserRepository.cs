@@ -1,4 +1,4 @@
-﻿using Infrastructure.Entities;
+﻿using Source.net.infrastructure.Entities;
 
 namespace Source.net.services.Repositories.Interfaces
 {

@@ -1,4 +1,4 @@
-﻿using Infrastructure.Entities;
+﻿using Source.net.infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Source.net.services.Database

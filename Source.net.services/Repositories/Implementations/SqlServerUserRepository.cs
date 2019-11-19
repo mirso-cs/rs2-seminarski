@@ -1,4 +1,4 @@
-﻿using Infrastructure.Entities;
+﻿using Source.net.infrastructure.Entities;
 using Source.net.services.Database;
 using Source.net.services.Repositories.Interfaces;
 using System.Linq;
