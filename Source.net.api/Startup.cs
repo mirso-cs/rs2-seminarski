@@ -30,7 +30,7 @@ namespace Source.net.api
             {
                 var securityRequirements = new Dictionary<string, IEnumerable<string>>(){
                     {
-                        "bearer",
+                        "Bearer",
                         new string[] { }
                     }  
                 };
@@ -50,7 +50,7 @@ namespace Source.net.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(
-                x => x.Filters.Add<ErrorFilter>()
+               /// x => x.Filters.Add<ErrorFilter>()
             ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<SourceNetContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.Configure<TokenManagement>(Configuration.GetSection("tokenManagement"));
@@ -76,10 +76,18 @@ namespace Source.net.api
                 };
             });
 
+            // Services
             services.AddScoped<AuthenticationService, JWTAuthenticationService>();
-            services.AddScoped<UserRepository, SqlServerUserRepository>();
+            services.AddScoped<CategoryService, CategoryServiceImp>();
             services.AddScoped<UserService, UserServiceImp>();
+
+            // Repositories
+            services.AddScoped<UserRepository, SqlServerUserRepository>();
+            services.AddScoped<CategoryRepository, SqlServerCategoryRepository>();
+
+            //Mappers
             services.AddSingleton<UserMapper>();
+            services.AddSingleton<CategoryMapper>();
             services.AddSingleton<RoleMapper>();
 
             var contact = Configuration.GetSection("Swagger").GetSection("Contact");
@@ -106,6 +114,10 @@ namespace Source.net.api
                     Name = "Authorization",
                     In = "header",
                     Type = "apiKey"
+                });
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+                {
+                    {"Bearer", new string[] { }},
                 });
                 c.DocumentFilter<BasicAuthDocumentFilter>();
             });

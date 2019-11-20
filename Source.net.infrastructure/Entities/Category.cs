@@ -6,6 +6,6 @@ namespace Source.net.infrastructure.Entities
     {
         [Key]
         public int id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
     }
 }
