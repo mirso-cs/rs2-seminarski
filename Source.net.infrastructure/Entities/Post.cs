@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Source.net.infrastructure.Entities
@@ -10,7 +11,7 @@ namespace Source.net.infrastructure.Entities
         public string Title { get; set; }
         public string Subtitle { get; set; }
         public string Content { get; set; }
-        public byte[] Thumbnail { get; set; }
+        public string Thumbnail { get; set; }
         public bool Published{ get; set; }
 
         [ForeignKey("UserId")]
@@ -20,5 +21,7 @@ namespace Source.net.infrastructure.Entities
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
         public int CategoryId { get; set; }
+        
+        public virtual List<PostTag> AssociatedTags { get; set; }
     }
 }

@@ -1,0 +1,38 @@
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+
+namespace Source.net.infrastructure.Dtos
+{
+    public class CreatePostDto
+    {
+        [Required]
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [Required]
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [Required]
+        [JsonProperty("subtitle")]
+        public string Subtitle { get; set; }
+
+        [Required]
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [Required]
+        [JsonProperty("thumbnail")]
+        public string Thumbnail { get; set; }
+
+        [Required]
+        [JsonProperty("category_id")]
+        public int CategoryId{ get; set; }
+
+        public int UserId{ get; set; }
+
+        [Required]
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+    }
+}

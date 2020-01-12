@@ -11,5 +11,6 @@ namespace Source.net.services.Repositories.Interfaces
         T Add(T model);
         T Update(T model);
         T Delete(int id);
+        void BulkInsert(ICollection<T> entities);
     }
 }

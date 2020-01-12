@@ -80,15 +80,21 @@ namespace Source.net.api
             services.AddScoped<AuthenticationService, JWTAuthenticationService>();
             services.AddScoped<CategoryService, CategoryServiceImp>();
             services.AddScoped<UserService, UserServiceImp>();
+            services.AddScoped<PostService, PostServiceImp>();
 
             // Repositories
             services.AddScoped<UserRepository, SqlServerUserRepository>();
             services.AddScoped<CategoryRepository, SqlServerCategoryRepository>();
+            services.AddScoped<PostRepository, SqlServerPostRepository>();
+            services.AddScoped<TagRepository, SqlServerTagRepository>();
+            services.AddScoped<PostTagRepository, SqlServerPostTagRepository>();
 
             //Mappers
             services.AddSingleton<UserMapper>();
             services.AddSingleton<CategoryMapper>();
             services.AddSingleton<RoleMapper>();
+            services.AddSingleton<PostMapper>();
+            services.AddSingleton<TagMapper>();
 
             var contact = Configuration.GetSection("Swagger").GetSection("Contact");
             var license = Configuration.GetSection("Swagger").GetSection("License");

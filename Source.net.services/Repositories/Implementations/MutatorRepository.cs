@@ -29,12 +29,12 @@ namespace Source.net.services.Repositories.Implementations
 
         }
 
-        public T Get(int id)
+        public virtual T Get(int id)
         {
             return _db.Set<T>().Find(id);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return _db.Set<T>().ToList();
         }
@@ -45,6 +45,11 @@ namespace Source.net.services.Repositories.Implementations
             _db.Set<T>().Update(entity);
             _db.SaveChanges();
             return entity;
+        }
+
+        public void BulkInsert(ICollection<T> entities)
+        {
+            _db.Set<T>().AddRange(entities);
         }
     }
 }

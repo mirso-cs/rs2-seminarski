@@ -2,6 +2,7 @@
 using Source.net.infrastructure.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Source.net.services.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Source.net.api.Controllers
 {
@@ -13,6 +14,7 @@ namespace Source.net.api.Controllers
             _crudService = crudService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public virtual IEnumerable<TView> Get()
         {
@@ -21,12 +23,14 @@ namespace Source.net.api.Controllers
 
         [HttpGet]
         [Route("{id}")]
+        [AllowAnonymous]
         public virtual TView GetById(int id)
         {
             return _crudService.Get(id);
         }
 
         [HttpPost]
+        [Authorize]
         public virtual TView Add(TCreate dto)
         {
             if (!ModelState.IsValid)
@@ -39,6 +43,7 @@ namespace Source.net.api.Controllers
 
         [HttpPatch]
         [Route("{id}")]
+        [Authorize]
         public virtual TView Update(int id, TUpdate dto)
         {
             if (!ModelState.IsValid)
@@ -51,6 +56,7 @@ namespace Source.net.api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
+        [Authorize]
         public virtual TView Delete(int id)
         {
             if (!ModelState.IsValid)
