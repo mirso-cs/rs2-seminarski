@@ -10,7 +10,7 @@ namespace Source.net.desktop.Post
 {
     public partial class PostsForm : Form
     {
-        private readonly HttpClient http = new HttpClient("post");
+        private readonly HttpClient http = new PostHttpClient("post");
         public PostsForm()
         {
             InitializeComponent();

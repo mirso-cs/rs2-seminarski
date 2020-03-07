@@ -1,0 +1,15 @@
+﻿using Source.net.infrastructure.Enums;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Source.net.infrastructure.Views
+{
+    public class AuthUser
+    {
+        public string Username { get; set; }
+        public string Token { get; set; }
+        public Role RoleId { get; set; }
+        public string Role { get; set; }
+    }
+}

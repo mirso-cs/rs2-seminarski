@@ -33,7 +33,7 @@ namespace Source.net.api.Security
                 return false;
             }
 
-            var claim = new[]
+            var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Username),
                 new Claim(ClaimTypes.Name, user.Name + ' ' + user.Surname),
@@ -45,8 +45,8 @@ namespace Source.net.api.Security
             var jwtToken = new JwtSecurityToken(
                 _tokenManagement.Issuer,
                 _tokenManagement.Audience,
-                claim,
-                expires: DateTime.Now.AddMinutes(_tokenManagement.AccessExpiration),
+                claims,
+                expires: DateTime.Now.AddDays(_tokenManagement.AccessExpiration),
                 signingCredentials: credentials
             );
             token = new JwtSecurityTokenHandler().WriteToken(jwtToken);

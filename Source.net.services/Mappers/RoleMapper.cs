@@ -5,8 +5,6 @@ namespace Source.net.services.Mappers
 {
     public class RoleMapper
     {
-        private string[] Roles = new string[] { "Super user", "Admin", "User" };
-
         public string ToString(Role role)
         {
             switch (role)

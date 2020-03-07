@@ -47,7 +47,6 @@ namespace Source.net.services.Mappers
                 Name = view.Name,
                 Role = view.RoleId,
                 Surname = view.Surname,
-                Token = view.Token,
                 Username = view.Username,
                 Password = "HIDDEN"
             };
@@ -61,7 +60,6 @@ namespace Source.net.services.Mappers
                 Role = _roleMapper.ToString(entity.Role),
                 Name = entity.Name,
                 Surname = entity.Surname,
-                Token = entity.Token,
                 Username = entity.Username,
                 RoleId = entity.Role,
                 Active = entity.Active

@@ -1,6 +1,8 @@
 ﻿using Source.net.infrastructure.Entities;
+using Source.net.infrastructure.SearchFilters;
 using Source.net.services.Database;
 using Source.net.services.Repositories.Interfaces;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Source.net.services.Repositories.Implementations
@@ -53,6 +55,26 @@ namespace Source.net.services.Repositories.Implementations
             user.Token = null;
             Update(user);
             return user;
+        }
+
+        public IEnumerable<User> GetAll(UserFilters filters)
+        {
+            var query = _db.Users.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(filters.Email) && !string.IsNullOrWhiteSpace(filters.Username))
+            {
+               query = query.Where(x => (x.Email == filters.Email) || (x.Username == filters.Username));
+            }
+            else if(!string.IsNullOrWhiteSpace(filters.Email))
+            {
+                query = query.Where(x => x.Email == filters.Email);
+            }
+            else if(!string.IsNullOrWhiteSpace(filters.Username))
+            {
+                query = query.Where(x => x.Username == filters.Username);
+            }
+
+            return query.ToList();
         }
     }
 }

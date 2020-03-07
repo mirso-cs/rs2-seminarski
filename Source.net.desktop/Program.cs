@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Source.net.desktop.Auth;
 using Source.net.desktop.Shared;
 
 namespace Source.net.desktop

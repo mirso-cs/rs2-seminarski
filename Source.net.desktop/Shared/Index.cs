@@ -1,4 +1,5 @@
-﻿using Source.net.desktop.Post;
+﻿using Source.net.desktop.Auth;
+using Source.net.desktop.Post;
 using Source.net.desktop.User;
 using System;
 using System.Collections.Generic;
@@ -120,6 +121,32 @@ namespace Source.net.desktop.Shared
             postsForm.MdiParent = this;
             postsForm.WindowState = FormWindowState.Maximized;
             postsForm.Show();
+        }
+
+        private void Index_Load(object sender, EventArgs e)
+        {
+            TriggerLogin();
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TriggerLogin();
+        }
+
+        private void TriggerLogin()
+        {
+            var login = new Login();
+            login.MdiParent = this;
+            login.FormClosed += new FormClosedEventHandler(PostLogin);
+            login.Show();
+        }
+
+        private void PostLogin(object sender, EventArgs e)
+        {
+            bool showTabs = HttpClient.RoleId != infrastructure.Enums.Role.USER;
+            userToolStripMenuItem.Visible = showTabs;
+            tagsToolStripMenuItem.Visible = showTabs;
+            categoriesToolStripMenuItem.Visible = showTabs;
         }
     }
 }

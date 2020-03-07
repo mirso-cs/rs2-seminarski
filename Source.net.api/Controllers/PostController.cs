@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Source.net.api.Exceptions;
+using Source.net.api.Utils.HttpContext;
 using Source.net.infrastructure.Dtos;
 using Source.net.infrastructure.Entities;
 using Source.net.infrastructure.Views;
@@ -15,11 +14,13 @@ namespace Source.net.api.Controllers
     public class PostController : CRUDController<Post, CreatePostDto, UpdatePostDto, PostView>
     {
         private readonly UserService _userService;
+        private readonly HttpContextExtensible _httpContext;
 
-        public PostController(PostService service, UserService userService) :
+        public PostController(PostService service, UserService userService, HttpContextExtensible httpContext) :
             base(service)
         {
             _userService = userService;
+            _httpContext = httpContext;
         }
 
         [HttpPost]
@@ -31,7 +32,7 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Invalid Request");
             }
 
-            var user = getUser();
+            var user = _httpContext.getUser();
 
             return ((PostService)_crudService).Add(dto, user.id);
         }
@@ -52,33 +53,20 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Unknown post!");
             }
 
-            var user = getUser();
+            var user = _httpContext.getUser();
             var postUser = _userService.Get(post.UserId);
 
-            if (!isAuthorized(user, postUser))
+            if (!user.isAdmin() && postUser.id != user.id)
             {
                 throw new BadRequestException("Not authorized for that action!");
             }
 
-            if(postUser.id == user.id)
+            if(!postUser.isAdmin())
             {
                 dto.Published = false; // if user updates post unpublish it
             }
 
             return _crudService.Update(id, dto);
         }
-
-        private UserView getUser()
-        {
-            var username = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).First()?.Value;
-            return _userService.GetByUsername(username);
-        }
-        private bool isAuthorized(UserView authUser, UserView altUser)
-        {
-            if (authUser.isAdmin())
-                return true;
-            return authUser.id == altUser.id && altUser.Active;
-        }
-
     }
 }

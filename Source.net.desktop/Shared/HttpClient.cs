@@ -1,30 +1,46 @@
 ﻿using System.Threading.Tasks;
 using Flurl.Http;
+using Source.net.infrastructure.Enums;
 
 namespace Source.net.desktop.Shared
 {
-    public class HttpClient
+    public abstract class HttpClient
     {
         public string Path { get; }
-        public ClassUrlEncoder Encoder { get; }
+        public static string Token { get; set; }
+        public static Role RoleId { get; set; }
+        public ObjectUrlEncoder ObjectEncoder { get; }
 
         public HttpClient(string path)
         {
             Path = path;
-            Encoder = new ClassUrlEncoder();
+            ObjectEncoder = new ObjectUrlEncoder();
         }
 
         public async Task<T> Get<T>(object filters = null)
         {
-            string request = $"{Properties.Settings.Default.baseUrl}/{Path}";
+            IFlurlRequest request = getPath(filters);
 
-            if(filters != null)
+            return await request.GetJsonAsync<T>();
+        }
+
+        public async Task<T> GetById<T>(int id)
+        {
+            IFlurlRequest request = getPath();
+
+            return await request.AppendPathSegment($"/{id}").GetJsonAsync<T>();
+        }
+
+        protected IFlurlRequest getPath(object filters = null)
+        {
+            string baseString = $"{Properties.Settings.Default.baseUrl}/{Path}";
+
+            if (filters != null)
             {
-                request += $"?{Encoder.EncodeAsUrl(filters)}";
+                baseString += $"?{ObjectEncoder.AsUrl(filters)}";
             }
 
-
-           return await request.GetJsonAsync<T>();
+            return baseString.WithOAuthBearerToken(Token);
         }
     }
 }

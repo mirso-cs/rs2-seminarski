@@ -8,12 +8,12 @@ using Source.net.services.Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using Source.net.infrastructure.SearchFilters;
 
 namespace Source.net.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly AuthenticationService _authService;
@@ -26,25 +26,17 @@ namespace Source.net.api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<UserView> Get()
+        [Authorize(Roles = "Admin,Super user")]
+        public IEnumerable<UserView> Get([FromQuery]UserFilters filters)
         {
-            var authUser = getUser();
-            if (!authUser.isAdmin())
-            {
-                throw new BadRequestException("User does not have permission for this action.");
-            }
-            return _userService.GetAll();
+            return _userService.GetAll(filters);
         }
 
         [HttpGet]
         [Route("{userId}")]
+        [Authorize(Roles = "Super user,Admin")]
         public UserView GetById(int userId)
         {
-            var authUser = getUser();
-            if (!authUser.isAdmin())
-            {
-                throw new BadRequestException("User does not have permission for this action.");
-            }
             return _userService.Get(userId);
         }
 
@@ -61,7 +53,14 @@ namespace Source.net.api.Controllers
             string token;
             if (_authService.IsAuthenticated(request, out token))
             {
-                return Ok(new { token });
+                var user = _userService.GetByUsername(request.Username);
+
+                return Ok(new AuthUser { 
+                    Token = token, 
+                    Username = request.Username,
+                    RoleId = user.RoleId,
+                    Role = user.Role
+                });
             }
 
             return BadRequest("Invalid Request");
@@ -82,13 +81,16 @@ namespace Source.net.api.Controllers
 
         [HttpGet]
         [Route("me")]
+        [Authorize]
         public UserView GetMe()
         {
-            return getUser();
+            var username = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).First()?.Value;
+            return _userService.GetByUsername(username);
         }
 
         [HttpPatch]
         [Route("{userId}")]
+        [Authorize(Roles = "Super user,Admin")]
         public UserView UpdateUser(int userId, [FromBody] UpdateUserDto dto)
         {
             if (!ModelState.IsValid)
@@ -96,16 +98,12 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Invalid Request");
             }
 
-            if (isAuthorized(userId))
-            {
-                return _userService.Update(userId, dto);
-            }
-
-            throw new BadRequestException("User does not have permission for this action.");
+            return _userService.Update(userId, dto);
         }
 
         [HttpPut]
         [Route("{userId}/password")]
+        [Authorize]
         public UserView UpdatePassword(int userId, [FromBody] UpdatePasswordDto dto)
         {
             if (!ModelState.IsValid)
@@ -113,7 +111,7 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Invalid Request");
             }
 
-            if (isAuthorized(userId))
+            if (_userService.hasPermissions(userId))
             {
                 return _userService.UpdatePassword(userId, dto);
             }
@@ -121,7 +119,7 @@ namespace Source.net.api.Controllers
             throw new BadRequestException("User does not have permission for this action.");
         }
 
-        [Authorize(Roles = "Super user")]
+        [Authorize(Roles = "Admin,Super user")]
         [HttpPut]
         [Route("{userId}/role")]
         public UserView UpdateRole(int userId, [FromBody] UpdateRoleDto dto)
@@ -134,16 +132,22 @@ namespace Source.net.api.Controllers
             return _userService.UpdateRole(userId, dto);
         }
 
-        [Authorize(Roles = "Super user")]
+        [Authorize(Roles = "Admin,Super user")]
         [HttpPut]
         [Route("{userId}/restore")]
         public UserView RestoreUser(int userId)
         {
+            if (!ModelState.IsValid)
+            {
+                throw new BadRequestException("Invalid Request");
+            }
+
             return _userService.ActivateUser(userId);
         }
 
         [HttpDelete]
         [Route("{userId}")]
+        [Authorize(Roles = "Admin,Super user")]
         public UserView UpdateRole(int userId)
         {
             if (!ModelState.IsValid)
@@ -151,26 +155,8 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Invalid Request");
             }
 
-            if (isAuthorized(userId))
-            {
-                return _userService.Get(userId);
-            }
-
-            throw new BadRequestException("User does not have permission for this action.");
+            return _userService.Delete(userId);
         }
 
-        private UserView getUser()
-        {
-            var username = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).First()?.Value;
-            return _userService.GetByUsername(username);
-        }
-        private bool isAuthorized(int userId)
-        {
-            var authUser = getUser();
-            if (authUser.isAdmin())
-                return true;
-            var user = _userService.Get(userId);
-            return authUser.id == user.id && user.Active;
-        }
     }
 }

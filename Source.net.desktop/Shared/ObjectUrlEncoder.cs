@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 namespace Source.net.desktop.Shared
 {
-    public class ClassUrlEncoder
+    public class ObjectUrlEncoder
     {
-        public string EncodeAsUrl(object obj)
+        public string AsUrl(object obj)
         {
             var dict = obj.GetType().GetProperties()
                 .ToList()

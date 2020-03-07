@@ -19,6 +19,7 @@ using Source.net.api.Filters;
 using System.Collections.Generic;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.Swagger;
+using Source.net.api.Utils.HttpContext;
 
 namespace Source.net.api
 {
@@ -89,12 +90,16 @@ namespace Source.net.api
             services.AddScoped<TagRepository, SqlServerTagRepository>();
             services.AddScoped<PostTagRepository, SqlServerPostTagRepository>();
 
-            //Mappers
+            // Mappers
             services.AddSingleton<UserMapper>();
             services.AddSingleton<CategoryMapper>();
             services.AddSingleton<RoleMapper>();
             services.AddSingleton<PostMapper>();
             services.AddSingleton<TagMapper>();
+
+
+            // Utils
+            services.AddScoped<HttpContextExtensible, HttpContextExtension>();
 
             var contact = Configuration.GetSection("Swagger").GetSection("Contact");
             var license = Configuration.GetSection("Swagger").GetSection("License");

@@ -9,7 +9,6 @@ namespace Source.net.infrastructure.Views
         public string Surname { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
-        public string Token { get; set; }
         public string Role { get; set; }
         public bool Active{ get; set; }
         public Role RoleId { get; set; }
@@ -17,6 +16,11 @@ namespace Source.net.infrastructure.Views
         public bool isAdmin()
         {
             return RoleId <= Enums.Role.ADMIN;
+        }
+
+        public bool isSA()
+        {
+            return RoleId == Enums.Role.SUPER_USER;
         }
     }
 }

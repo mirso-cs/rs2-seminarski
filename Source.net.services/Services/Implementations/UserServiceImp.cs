@@ -1,10 +1,12 @@
 ﻿using Source.net.infrastructure.Dtos;
 using Source.net.infrastructure.Entities;
 using Source.net.infrastructure.Exceptions;
+using Source.net.infrastructure.SearchFilters;
 using Source.net.infrastructure.Views;
 using Source.net.services.Mappers;
 using Source.net.services.Repositories.Interfaces;
 using Source.net.services.Services.Interfaces;
+using System.Collections.Generic;
 
 namespace Source.net.services.Services.Implementations
 {
@@ -84,6 +86,29 @@ namespace Source.net.services.Services.Implementations
             var user = _repo.ActivateUser(userId);
             return _mapper.From(user);
         }
-  
+
+        public bool hasPermissions(int id)
+        {
+            var user = Get(id);
+
+            if (user.isAdmin())
+                return true;
+            
+            return id == user.id && user.Active;
+        }
+
+        public IEnumerable<UserView> GetAll(UserFilters filters)
+        {
+            List<UserView> views = new List<UserView>();
+            var entities = _repo.GetAll(filters);
+            
+            foreach (var entity in entities)
+            {
+                views.Add(_mapper.From(entity));
+            }
+
+            return views;
+
+        }
     }
 }
