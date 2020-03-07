@@ -6,8 +6,8 @@ using System.Collections.Generic;
 
 namespace Source.net.services.Services.Interfaces
 {
-    public interface CategoryService : 
-        BaseService<Category, CategoryDto, CategoryDto, CategoryView, CategoryFilter>
+    public interface TagService : 
+        BaseService<Tag, TagDto, TagDto, TagView, TagFilters>
     {
     }
 }

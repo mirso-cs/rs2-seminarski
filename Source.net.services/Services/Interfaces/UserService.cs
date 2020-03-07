@@ -6,9 +6,8 @@ using System.Collections.Generic;
 namespace Source.net.services.Services.Interfaces
 {
     public interface UserService: 
-        BaseService<UserService, RegisterDto, UpdateUserDto, UserView>
+        BaseService<UserService, RegisterDto, UpdateUserDto, UserView, UserFilters>
     {
-        IEnumerable<UserView> GetAll(UserFilters filters);
         UserView GetByUsername(string username);
         UserView UpdatePassword(int userId, UpdatePasswordDto dto);
         UserView UpdateRole(int userId, UpdateRoleDto dto);

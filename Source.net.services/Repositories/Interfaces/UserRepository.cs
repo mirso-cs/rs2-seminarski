@@ -4,9 +4,8 @@ using System.Collections.Generic;
 
 namespace Source.net.services.Repositories.Interfaces
 {
-    public interface UserRepository: Repository<User>
+    public interface UserRepository: Repository<User, UserFilters>
     {
-        IEnumerable<User> GetAll(UserFilters filters);
         User GetUserByUsername(string username);
         User GetByEmail(string email);
         User SetToken(string username, string token);

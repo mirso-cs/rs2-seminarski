@@ -1,5 +1,7 @@
 ﻿using Source.net.desktop.Auth;
+using Source.net.desktop.Categories;
 using Source.net.desktop.Post;
+using Source.net.desktop.Tags;
 using Source.net.desktop.User;
 using System;
 using System.Collections.Generic;
@@ -147,6 +149,20 @@ namespace Source.net.desktop.Shared
             userToolStripMenuItem.Visible = showTabs;
             tagsToolStripMenuItem.Visible = showTabs;
             categoriesToolStripMenuItem.Visible = showTabs;
+        }
+
+        private void categoriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var categoriesForm = new CategoriesForm();
+            categoriesForm.MdiParent = this;
+            categoriesForm.Show();
+        }
+
+        private void tagsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var tagsForm = new TagsForm();
+            tagsForm.MdiParent = this;
+            tagsForm.Show();
         }
     }
 }

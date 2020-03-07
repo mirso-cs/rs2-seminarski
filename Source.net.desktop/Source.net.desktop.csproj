@@ -72,6 +72,18 @@
     <Compile Include="Auth\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Categories\CategoriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Categories\CategoriesForm.Designer.cs">
+      <DependentUpon>CategoriesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Categories\CategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Categories\CategoryForm.Designer.cs">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Post\PostGridItem.cs" />
     <Compile Include="Post\PostHttpClient.cs" />
     <Compile Include="Post\PostsForm.cs">
@@ -89,6 +101,18 @@
     </Compile>
     <Compile Include="Shared\Index.Designer.cs">
       <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tags\TagForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tags\TagForm.Designer.cs">
+      <DependentUpon>TagForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tags\TagsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tags\TagsForm.Designer.cs">
+      <DependentUpon>TagsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="User\UserForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +133,12 @@
     <EmbeddedResource Include="Auth\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Categories\CategoriesForm.resx">
+      <DependentUpon>CategoriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Categories\CategoryForm.resx">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Post\PostsForm.resx">
       <DependentUpon>PostsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +154,12 @@
     </Compile>
     <EmbeddedResource Include="Shared\Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tags\TagForm.resx">
+      <DependentUpon>TagForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tags\TagsForm.resx">
+      <DependentUpon>TagsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>

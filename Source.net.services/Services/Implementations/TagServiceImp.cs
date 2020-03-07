@@ -5,22 +5,23 @@ using Source.net.infrastructure.Views;
 using Source.net.services.Mappers;
 using Source.net.services.Repositories.Interfaces;
 using Source.net.services.Services.Interfaces;
+using System.Collections.Generic;
 
 namespace Source.net.services.Services.Implementations
 {
-    public class CategoryServiceImp : 
+    public class TagServiceImp : 
         BaseServiceImp<
-            Category, 
-            CategoryView, 
-            CategoryMapper, 
-            CategoryRepository, 
-            CategoryDto, 
-            CategoryDto, 
-            CategoryFilter
+            Tag, 
+            TagView, 
+            TagMapper, 
+            TagRepository, 
+            TagDto, 
+            TagDto, 
+            TagFilters
         >,
-        CategoryService
+        TagService
     {
-        public CategoryServiceImp(CategoryMapper mapper, CategoryRepository repository): 
+        public TagServiceImp(TagMapper mapper, TagRepository repository): 
             base(mapper, repository)
         {
         }

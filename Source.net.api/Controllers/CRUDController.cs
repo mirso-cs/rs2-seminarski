@@ -6,19 +6,24 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Source.net.api.Controllers
 {
-    public class CRUDController<TEntity, TCreate, TUpdate, TView> : ControllerBase where TEntity: class
+    public class CRUDController<TEntity, TCreate, TUpdate, TView, TFilter> : ControllerBase where TEntity: class
     {
-        protected readonly BaseService<TEntity, TCreate, TUpdate, TView> _crudService;
-        public CRUDController(BaseService<TEntity, TCreate, TUpdate, TView> crudService)
+        protected readonly BaseService<TEntity, TCreate, TUpdate, TView, TFilter> _crudService;
+        public CRUDController(BaseService<TEntity, TCreate, TUpdate, TView, TFilter> crudService)
         {
             _crudService = crudService;
         }
 
         [AllowAnonymous]
         [HttpGet]
-        public virtual IEnumerable<TView> Get()
+        public virtual IEnumerable<TView> Get([FromQuery]TFilter filter)
         {
-            return _crudService.GetAll();
+            if(filter == null)
+            {
+                return _crudService.GetAll();
+            }
+
+            return _crudService.GetAll(filter);
         }
 
         [HttpGet]

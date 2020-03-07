@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Source.net.services.Repositories.Interfaces
 {
-    public interface Repository<T>
+    public interface Repository<T, TFilter>
     {
         IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(TFilter filter);
         T Get(int id);
         T Add(T model);
         T Update(T model);

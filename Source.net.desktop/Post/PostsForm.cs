@@ -25,7 +25,7 @@ namespace Source.net.desktop.Post
                 items.Add(new PostGridItem {
                     Published = post.Published,
                     Subtitle = post.Subtitle,
-                    Tags = string.Join(", ", post.Tags.Select(x => x.name).ToArray()),
+                    Tags = string.Join(", ", post.Tags.Select(x => x.Name).ToArray()),
                     Thumbnail = post.Thumbnail,
                     Title = post.Title
                 });

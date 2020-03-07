@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Source.net.infrastructure.Entities;
+using Source.net.infrastructure.SearchFilters;
 using Source.net.services.Database;
 using Source.net.services.Repositories.Interfaces;
 using System.Collections.Generic;
@@ -31,5 +32,11 @@ namespace Source.net.services.Repositories.Implementations
                 .ToList();
         }
 
+        public IEnumerable<Post> GetAll(PostFilters filter)
+        {
+            var query = _db.Posts.AsQueryable();
+
+            return query.ToList();
+        }
     }
 }

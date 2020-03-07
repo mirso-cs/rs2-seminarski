@@ -4,6 +4,7 @@ using Source.net.api.Exceptions;
 using Source.net.api.Utils.HttpContext;
 using Source.net.infrastructure.Dtos;
 using Source.net.infrastructure.Entities;
+using Source.net.infrastructure.SearchFilters;
 using Source.net.infrastructure.Views;
 using Source.net.services.Services.Interfaces;
 
@@ -11,7 +12,14 @@ namespace Source.net.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PostController : CRUDController<Post, CreatePostDto, UpdatePostDto, PostView>
+    public class PostController : 
+        CRUDController<
+            Post,
+            CreatePostDto, 
+            UpdatePostDto, 
+            PostView,
+            PostFilters
+        >
     {
         private readonly UserService _userService;
         private readonly HttpContextExtensible _httpContext;

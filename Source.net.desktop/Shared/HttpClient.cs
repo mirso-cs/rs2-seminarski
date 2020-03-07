@@ -4,7 +4,7 @@ using Source.net.infrastructure.Enums;
 
 namespace Source.net.desktop.Shared
 {
-    public abstract class HttpClient
+    public class HttpClient
     {
         public string Path { get; }
         public static string Token { get; set; }
@@ -29,21 +29,21 @@ namespace Source.net.desktop.Shared
             return await request.GetJsonAsync<T>();
         }
 
-        public async Task<T> GetById<T>(int id)
+        public async Task<T> GetById<T>(object id)
         {
             IFlurlRequest request = getPath();
 
             return await request.AppendPathSegment($"/{id}").GetJsonAsync<T>();
         }
 
-        public async Task Insert<T>(T request)
+        public async Task<T> Insert<T>(object request)
         {
-            await getPath().PostJsonAsync(request);
+            return await getPath().PostJsonAsync(request).ReceiveJson<T>();
         }
 
-        public async Task Update<T>(T request)
+        public async Task<T> Update<T>(object id, object request)
         {
-            await getPath().PatchJsonAsync(request);
+            return await getPath().AppendPathSegment($"/{id}").PatchJsonAsync(request).ReceiveJson<T>();
         }
 
         public async Task Delete(int id)

@@ -82,6 +82,7 @@ namespace Source.net.api
             services.AddScoped<CategoryService, CategoryServiceImp>();
             services.AddScoped<UserService, UserServiceImp>();
             services.AddScoped<PostService, PostServiceImp>();
+            services.AddScoped<TagService, TagServiceImp>();
 
             // Repositories
             services.AddScoped<UserRepository, SqlServerUserRepository>();

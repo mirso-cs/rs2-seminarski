@@ -12,16 +12,16 @@ namespace Source.net.api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Roles = "Admin,Super user")]
-    public class CategoryController : 
+    public class TagController : 
         CRUDController<
-            Category, 
-            CategoryDto, 
-            CategoryDto, 
-            CategoryView, 
-            CategoryFilter
+            Tag,
+            TagDto,
+            TagDto,
+            TagView,
+            TagFilters
         >
     {
-        public CategoryController(CategoryService service) :
+        public TagController(TagService service) :
             base(service)
         {
 

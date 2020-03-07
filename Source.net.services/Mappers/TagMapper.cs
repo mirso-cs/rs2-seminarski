@@ -1,15 +1,16 @@
-﻿using Source.net.infrastructure.Entities;
+﻿using Source.net.infrastructure.Dtos;
+using Source.net.infrastructure.Entities;
 using Source.net.infrastructure.Views;
 
 namespace Source.net.services.Mappers
 {
-    public class TagMapper
+    public class TagMapper: Mapper<Tag, TagView, TagDto, TagDto>
     {
         public Tag To(TagView view)
         {
             return new Tag
             {
-                name = view.name
+                name = view.Name
             };
         }
 
@@ -17,9 +18,20 @@ namespace Source.net.services.Mappers
         {
             return new TagView
             {
-                id = entity.id,
-                name = entity.name
+                Id = entity.id,
+                Name = entity.name
             };
+        }
+
+        public Tag To(TagDto dto)
+        {
+            return new Tag() { name = dto.Name };
+        }
+
+        public Tag To(TagDto dto, Tag entity)
+        {
+            entity.name = dto.Name;
+            return entity;
         }
     }
 }

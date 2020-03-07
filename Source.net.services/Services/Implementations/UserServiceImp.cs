@@ -11,7 +11,15 @@ using System.Collections.Generic;
 namespace Source.net.services.Services.Implementations
 {
     public class UserServiceImp : 
-        BaseServiceImp<User, UserView, UserMapper, UserRepository, RegisterDto, UpdateUserDto>,
+        BaseServiceImp<
+            User, 
+            UserView, 
+            UserMapper, 
+            UserRepository, 
+            RegisterDto, 
+            UpdateUserDto, 
+            UserFilters
+        >,
         UserService
     {
 
@@ -95,20 +103,6 @@ namespace Source.net.services.Services.Implementations
                 return true;
             
             return id == user.id && user.Active;
-        }
-
-        public IEnumerable<UserView> GetAll(UserFilters filters)
-        {
-            List<UserView> views = new List<UserView>();
-            var entities = _repo.GetAll(filters);
-            
-            foreach (var entity in entities)
-            {
-                views.Add(_mapper.From(entity));
-            }
-
-            return views;
-
         }
     }
 }
