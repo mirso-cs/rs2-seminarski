@@ -19,7 +19,12 @@ namespace Source.net.desktop.Shared
 
         public async Task<T> Get<T>(object filters = null)
         {
-            IFlurlRequest request = getPath(filters);
+            IFlurlRequest request = getPath();
+
+            if (filters != null)
+            {
+                request.SetQueryParams(filters);
+            }
 
             return await request.GetJsonAsync<T>();
         }
@@ -31,16 +36,24 @@ namespace Source.net.desktop.Shared
             return await request.AppendPathSegment($"/{id}").GetJsonAsync<T>();
         }
 
-        protected IFlurlRequest getPath(object filters = null)
+        public async Task Insert<T>(T request)
         {
-            string baseString = $"{Properties.Settings.Default.baseUrl}/{Path}";
+            await getPath().PostJsonAsync(request);
+        }
 
-            if (filters != null)
-            {
-                baseString += $"?{ObjectEncoder.AsUrl(filters)}";
-            }
+        public async Task Update<T>(T request)
+        {
+            await getPath().PatchJsonAsync(request);
+        }
 
-            return baseString.WithOAuthBearerToken(Token);
+        public async Task Delete(int id)
+        {
+            await getPath().AppendPathSegment($"/{id}").DeleteAsync();
+        }
+
+        protected IFlurlRequest getPath()
+        {
+            return $"{Properties.Settings.Default.baseUrl}/{Path}".WithOAuthBearerToken(Token);
         }
     }
 }
