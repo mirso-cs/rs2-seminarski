@@ -64,7 +64,7 @@ namespace Source.net.services.Services.Implementations
             addTags(dto.Tags, entity.id);
             var post = _repo.Update(_mapper.To(dto, entity));
 
-            return _mapper.From(post);
+            return _mapper.From(_repo.Get(id));
         }
 
         private void addTags(string[] Tags, int postId)

@@ -14,7 +14,7 @@ namespace Source.net.services.Repositories.Implementations
         {
         }
 
-        public IEnumerable<Category> GetAll(CategoryFilter filter)
+        public IEnumerable<Category> GetAll(CategoryFilters filter)
         {
             var query = _db.Categories.AsQueryable();
 

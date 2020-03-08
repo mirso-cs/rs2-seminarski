@@ -29,6 +29,7 @@ namespace Source.net.desktop.Auth
 
                 HttpClient.Token = user.Token;
                 HttpClient.RoleId = user.RoleId;
+                HttpClient.UserId = user.Id;
                 Close();
             } catch (Exception ex) {
                 MessageBox.Show("Unable to login. Additional info: " + ex.Message);

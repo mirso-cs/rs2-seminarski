@@ -18,7 +18,7 @@ namespace Source.net.api.Controllers
             CategoryDto, 
             CategoryDto, 
             CategoryView, 
-            CategoryFilter
+            CategoryFilters
         >
     {
         public CategoryController(CategoryService service) :

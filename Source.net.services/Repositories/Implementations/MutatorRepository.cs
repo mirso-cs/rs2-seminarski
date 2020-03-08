@@ -50,6 +50,7 @@ namespace Source.net.services.Repositories.Implementations
         public void BulkInsert(ICollection<T> entities)
         {
             _db.Set<T>().AddRange(entities);
+            _db.SaveChanges();
         }
     }
 }

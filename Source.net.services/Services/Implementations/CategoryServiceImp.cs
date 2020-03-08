@@ -16,7 +16,7 @@ namespace Source.net.services.Services.Implementations
             CategoryRepository, 
             CategoryDto, 
             CategoryDto, 
-            CategoryFilter
+            CategoryFilters
         >,
         CategoryService
     {

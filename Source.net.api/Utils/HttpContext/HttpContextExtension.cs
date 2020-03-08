@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Source.net.infrastructure.Views;
 using Source.net.services.Services.Interfaces;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 
 namespace Source.net.api.Utils.HttpContext
 {
-    public class HttpContextExtension: ControllerBase, HttpContextExtensible
+    public class HttpContextExtension: HttpContextExtensible
     {
         private readonly UserService _users;
         public HttpContextExtension(UserService users)
@@ -14,10 +15,13 @@ namespace Source.net.api.Utils.HttpContext
             _users = users;
         }
 
-        public UserView getUser()
+        public UserView getUserFromClaims(IEnumerable<Claim> Claims)
         {
-           string username = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).First()?.Value;
-           return _users.GetByUsername(username);
+           string username = Claims
+                .Where(c => c.Type == ClaimTypes.NameIdentifier)
+                .FirstOrDefault()?.Value;
+           
+            return _users.GetByUsername(username);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Source.net.services.Services.Interfaces
 {
     public interface CategoryService : 
-        BaseService<Category, CategoryDto, CategoryDto, CategoryView, CategoryFilter>
+        BaseService<Category, CategoryDto, CategoryDto, CategoryView, CategoryFilters>
     {
     }
 }

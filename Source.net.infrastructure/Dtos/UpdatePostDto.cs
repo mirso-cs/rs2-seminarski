@@ -6,10 +6,6 @@ namespace Source.net.infrastructure.Dtos
     public class UpdatePostDto
     {
         [Required]
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [Required]
         [JsonProperty("title")]
         public string Title { get; set; }
 

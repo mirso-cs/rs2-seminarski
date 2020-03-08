@@ -6,10 +6,6 @@ namespace Source.net.infrastructure.Dtos
     public class CreatePostDto
     {
         [Required]
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [Required]
         [JsonProperty("title")]
         public string Title { get; set; }
 
@@ -27,9 +23,7 @@ namespace Source.net.infrastructure.Dtos
 
         [Required]
         [JsonProperty("category_id")]
-        public int CategoryId{ get; set; }
-
-        public int UserId{ get; set; }
+        public int CategoryId { get; set; }
 
         [Required]
         [JsonProperty("tags")]

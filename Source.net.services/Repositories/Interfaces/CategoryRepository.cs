@@ -3,7 +3,7 @@ using Source.net.infrastructure.SearchFilters;
 
 namespace Source.net.services.Repositories.Interfaces
 {
-    public interface CategoryRepository : Repository<Category, CategoryFilter>
+    public interface CategoryRepository : Repository<Category, CategoryFilters>
     {
     }
 }

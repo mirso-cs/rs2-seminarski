@@ -9,12 +9,11 @@ namespace Source.net.desktop.Shared
         public string Path { get; }
         public static string Token { get; set; }
         public static Role RoleId { get; set; }
-        public ObjectUrlEncoder ObjectEncoder { get; }
+        public static int UserId { get; set; }
 
         public HttpClient(string path)
         {
             Path = path;
-            ObjectEncoder = new ObjectUrlEncoder();
         }
 
         public async Task<T> Get<T>(object filters = null)

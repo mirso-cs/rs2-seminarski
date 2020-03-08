@@ -42,7 +42,7 @@ namespace Source.net.desktop.Categories
 
         private async void filterButton_Click(object sender, EventArgs e)
         {
-            var filters = new CategoryFilter() { Name = textName.Text };
+            var filters = new CategoryFilters() { Name = textName.Text };
             var categories = await http.Get<List<CategoryView>>(filters);
             categoriesGrid.DataSource = categories;
         }

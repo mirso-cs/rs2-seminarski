@@ -59,7 +59,8 @@ namespace Source.net.api.Controllers
                     Token = token, 
                     Username = request.Username,
                     RoleId = user.RoleId,
-                    Role = user.Role
+                    Role = user.Role,
+                    Id = user.id
                 });
             }
 

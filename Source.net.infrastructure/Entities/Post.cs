@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace Source.net.infrastructure.Entities
 {
@@ -13,6 +14,7 @@ namespace Source.net.infrastructure.Entities
         public string Content { get; set; }
         public string Thumbnail { get; set; }
         public bool Published{ get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [ForeignKey("UserId")]
         public User User { get; set; }

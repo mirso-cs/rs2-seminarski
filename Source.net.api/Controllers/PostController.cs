@@ -40,12 +40,17 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Invalid Request");
             }
 
-            var user = _httpContext.getUser();
+            var user = _httpContext.getUserFromClaims(User.Claims);
+
+            if (user is null)
+            {
+                throw new BadRequestException("Invalid user!");
+            }
 
             return ((PostService)_crudService).Add(dto, user.id);
         }
 
-        [HttpPatch]
+        [HttpPatch("{id}")]
         [Authorize]
         public override PostView Update(int id, UpdatePostDto dto)
         {
@@ -61,7 +66,13 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Unknown post!");
             }
 
-            var user = _httpContext.getUser();
+            var user = _httpContext.getUserFromClaims(User.Claims);
+
+            if(user is null)
+            {
+                throw new BadRequestException("Invalid user!");
+            }
+
             var postUser = _userService.Get(post.UserId);
 
             if (!user.isAdmin() && postUser.id != user.id)

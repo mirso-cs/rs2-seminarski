@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Source.net.infrastructure.SearchFilters
 {
-    public class CategoryFilter
+    public class CategoryFilters
     {
         public string Name { get; set; }
     }

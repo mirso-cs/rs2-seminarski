@@ -1,0 +1,241 @@
+﻿namespace Source.net.desktop.Post
+{
+    partial class PostForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.textTitle = new System.Windows.Forms.TextBox();
+            this.textSubtitle = new System.Windows.Forms.TextBox();
+            this.textContent = new System.Windows.Forms.RichTextBox();
+            this.thumbnail = new System.Windows.Forms.PictureBox();
+            this.selectCategory = new System.Windows.Forms.ComboBox();
+            this.textTags = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.submitButton = new System.Windows.Forms.Button();
+            this.cbxPublished = new System.Windows.Forms.CheckBox();
+            this.uploadButton = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)(this.thumbnail)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // textTitle
+            // 
+            this.textTitle.Location = new System.Drawing.Point(12, 85);
+            this.textTitle.Name = "textTitle";
+            this.textTitle.Size = new System.Drawing.Size(452, 22);
+            this.textTitle.TabIndex = 0;
+            // 
+            // textSubtitle
+            // 
+            this.textSubtitle.Location = new System.Drawing.Point(12, 142);
+            this.textSubtitle.Name = "textSubtitle";
+            this.textSubtitle.Size = new System.Drawing.Size(452, 22);
+            this.textSubtitle.TabIndex = 1;
+            // 
+            // textContent
+            // 
+            this.textContent.Location = new System.Drawing.Point(12, 299);
+            this.textContent.Name = "textContent";
+            this.textContent.Size = new System.Drawing.Size(942, 463);
+            this.textContent.TabIndex = 2;
+            this.textContent.Text = "";
+            // 
+            // thumbnail
+            // 
+            this.thumbnail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.thumbnail.Location = new System.Drawing.Point(493, 85);
+            this.thumbnail.Name = "thumbnail";
+            this.thumbnail.Size = new System.Drawing.Size(461, 179);
+            this.thumbnail.TabIndex = 3;
+            this.thumbnail.TabStop = false;
+            // 
+            // selectCategory
+            // 
+            this.selectCategory.FormattingEnabled = true;
+            this.selectCategory.Location = new System.Drawing.Point(12, 194);
+            this.selectCategory.Name = "selectCategory";
+            this.selectCategory.Size = new System.Drawing.Size(452, 24);
+            this.selectCategory.TabIndex = 4;
+            // 
+            // textTags
+            // 
+            this.textTags.Location = new System.Drawing.Point(12, 242);
+            this.textTags.Name = "textTags";
+            this.textTags.Size = new System.Drawing.Size(452, 22);
+            this.textTags.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.label1.Location = new System.Drawing.Point(13, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 26);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Post";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Title";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 122);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 17);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Subtitle";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(490, 54);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 17);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Thumbnail";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 174);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 17);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Category";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 222);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 17);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Tag";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(15, 279);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 17);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Content";
+            // 
+            // submitButton
+            // 
+            this.submitButton.Location = new System.Drawing.Point(761, 778);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(193, 38);
+            this.submitButton.TabIndex = 13;
+            this.submitButton.Text = "Save";
+            this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            // 
+            // cbxPublished
+            // 
+            this.cbxPublished.AutoSize = true;
+            this.cbxPublished.Location = new System.Drawing.Point(18, 778);
+            this.cbxPublished.Name = "cbxPublished";
+            this.cbxPublished.Size = new System.Drawing.Size(92, 21);
+            this.cbxPublished.TabIndex = 14;
+            this.cbxPublished.Text = "Published";
+            this.cbxPublished.UseVisualStyleBackColor = true;
+            // 
+            // uploadButton
+            // 
+            this.uploadButton.Location = new System.Drawing.Point(622, 51);
+            this.uploadButton.Name = "uploadButton";
+            this.uploadButton.Size = new System.Drawing.Size(101, 23);
+            this.uploadButton.TabIndex = 15;
+            this.uploadButton.Text = "Browse";
+            this.uploadButton.UseVisualStyleBackColor = true;
+            this.uploadButton.Click += new System.EventHandler(this.uploadButton_Click);
+            // 
+            // PostForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(966, 828);
+            this.Controls.Add(this.uploadButton);
+            this.Controls.Add(this.cbxPublished);
+            this.Controls.Add(this.submitButton);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textTags);
+            this.Controls.Add(this.selectCategory);
+            this.Controls.Add(this.thumbnail);
+            this.Controls.Add(this.textContent);
+            this.Controls.Add(this.textSubtitle);
+            this.Controls.Add(this.textTitle);
+            this.Name = "PostForm";
+            this.Text = "Post";
+            this.Load += new System.EventHandler(this.PostForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.thumbnail)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TextBox textTitle;
+        private System.Windows.Forms.TextBox textSubtitle;
+        private System.Windows.Forms.RichTextBox textContent;
+        private System.Windows.Forms.PictureBox thumbnail;
+        private System.Windows.Forms.ComboBox selectCategory;
+        private System.Windows.Forms.TextBox textTags;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.CheckBox cbxPublished;
+        private System.Windows.Forms.Button uploadButton;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+    }
+}

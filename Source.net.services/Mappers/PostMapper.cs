@@ -2,6 +2,7 @@
 using Source.net.infrastructure.Dtos;
 using Source.net.infrastructure.Views;
 using System.Collections.Generic;
+using System;
 
 namespace Source.net.services.Mappers
 {
@@ -24,7 +25,11 @@ namespace Source.net.services.Mappers
                 Published = entity.Published,
                 Tags = mapTags(entity.AssociatedTags),
                 Subtitle = entity.Subtitle,
-                Thumbnail = entity.Thumbnail
+                Thumbnail = entity.Thumbnail,
+                User = entity.User.Name + " " + entity.User.Surname,
+                UserId = entity.UserId,
+                Category = entity.Category.Name,
+                CreatedAt = entity.CreatedAt
             };
         }
 
@@ -36,10 +41,10 @@ namespace Source.net.services.Mappers
                 Content = dto.Content,
                 Title = dto.Title,
                 Subtitle = dto.Subtitle,
-                UserId = dto.UserId,
                 Thumbnail = dto.Thumbnail,
                 CategoryId = dto.CategoryId,
                 Published = false,
+                CreatedAt = DateTime.Now
             };
         }
 
@@ -54,7 +59,8 @@ namespace Source.net.services.Mappers
                 UserId = view.UserId,
                 Thumbnail = view.Thumbnail,
                 CategoryId = view.CategoryId,
-                Published = view.Published
+                Published = view.Published,
+                CreatedAt = view.CreatedAt
             };
         }
 
