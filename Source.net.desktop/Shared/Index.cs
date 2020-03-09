@@ -1,5 +1,6 @@
 ﻿using Source.net.desktop.Auth;
 using Source.net.desktop.Categories;
+using Source.net.desktop.Dashboard;
 using Source.net.desktop.Post;
 using Source.net.desktop.Tags;
 using Source.net.desktop.User;
@@ -149,6 +150,23 @@ namespace Source.net.desktop.Shared
             userToolStripMenuItem.Visible = showTabs;
             tagsToolStripMenuItem.Visible = showTabs;
             categoriesToolStripMenuItem.Visible = showTabs;
+            OpenDashboard();
+        }
+
+        private void OpenDashboard()
+        {
+            Form dashboard;
+            if (HttpClient.RoleId == infrastructure.Enums.Role.USER)
+            {
+                dashboard = new UserDashboardForm();
+            }
+            else
+            {
+                dashboard = new AdminDashboardForm();
+            }
+
+            dashboard.MdiParent = this;
+            dashboard.Show();
         }
 
         private void categoriesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -163,6 +181,11 @@ namespace Source.net.desktop.Shared
             var tagsForm = new TagsForm();
             tagsForm.MdiParent = this;
             tagsForm.Show();
+        }
+
+        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenDashboard();
         }
     }
 }

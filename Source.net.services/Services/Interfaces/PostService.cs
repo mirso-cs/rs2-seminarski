@@ -2,6 +2,7 @@
 using Source.net.infrastructure.Entities;
 using Source.net.infrastructure.SearchFilters;
 using Source.net.infrastructure.Views;
+using System.Collections.Generic;
 
 namespace Source.net.services.Services.Interfaces
 {
@@ -9,5 +10,6 @@ namespace Source.net.services.Services.Interfaces
         BaseService<Post, CreatePostDto, UpdatePostDto, PostView, PostFilters>
     {
         PostView Add(CreatePostDto dto, int userId);
+        IEnumerable<PostView> GetAllForUser(int userId, PostFilters filters);
     }
 }

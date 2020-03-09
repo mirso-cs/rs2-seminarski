@@ -7,6 +7,7 @@ using Source.net.infrastructure.Entities;
 using Source.net.infrastructure.SearchFilters;
 using Source.net.infrastructure.Views;
 using Source.net.services.Services.Interfaces;
+using System.Collections.Generic;
 
 namespace Source.net.api.Controllers
 {
@@ -29,6 +30,20 @@ namespace Source.net.api.Controllers
         {
             _userService = userService;
             _httpContext = httpContext;
+        }
+
+        [HttpGet]
+        public override IEnumerable<PostView> Get([FromQuery]PostFilters filter)
+        {
+            var user = _httpContext.getUserFromClaims(User.Claims);
+            if(user.isAdmin())
+            {
+                return filter is null 
+                    ? _crudService.GetAll() 
+                    : _crudService.GetAll(filter);
+            }
+
+            return ((PostService)_crudService).GetAllForUser(user.id, filter);
         }
 
         [HttpPost]

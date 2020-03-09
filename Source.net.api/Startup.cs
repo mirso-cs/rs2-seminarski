@@ -90,6 +90,7 @@ namespace Source.net.api
             services.AddScoped<PostRepository, SqlServerPostRepository>();
             services.AddScoped<TagRepository, SqlServerTagRepository>();
             services.AddScoped<PostTagRepository, SqlServerPostTagRepository>();
+            services.AddScoped<Statistics, DashboardStatistics>();
 
             // Mappers
             services.AddSingleton<UserMapper>();

@@ -57,6 +57,18 @@ namespace Source.net.services.Services.Implementations
             return _mapper.From(entity);
         }
 
+        public IEnumerable<PostView> GetAllForUser(int userId, PostFilters filters)
+        {
+            List<PostView> views = new List<PostView>();
+            var entities = _repo.GetForUser(userId, filters);
+            foreach (var entity in entities)
+            {
+                views.Add(_mapper.From(entity));
+            }
+
+            return views;
+        }
+
         public override PostView Update(int id, UpdatePostDto dto)
         {
             var entity = _repo.Get(id);

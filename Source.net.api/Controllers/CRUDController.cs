@@ -18,7 +18,7 @@ namespace Source.net.api.Controllers
         [HttpGet]
         public virtual IEnumerable<TView> Get([FromQuery]TFilter filter)
         {
-            if(filter == null)
+            if (filter == null)
             {
                 return _crudService.GetAll();
             }
