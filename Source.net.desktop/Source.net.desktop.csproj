@@ -99,7 +99,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\Base64ImageEncoder.cs" />
     <Compile Include="Shared\HttpClient.cs" />
+    <Compile Include="Shared\ImageEncoder.cs" />
     <Compile Include="Shared\Index.cs">
       <SubType>Form</SubType>
     </Compile>

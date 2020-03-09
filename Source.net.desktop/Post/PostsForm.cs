@@ -43,12 +43,12 @@ namespace Source.net.desktop.Post
         {
             await LoadPosts(new PostFilters()
             {
-                Category = (string)selectTag.SelectedValue,
+                Category = (string)selectCategory.SelectedItem,
                 OnlyPublished = cbxPublished.Checked,
                 OnlyUnpublished = cbxUnpublished.Checked,
                 Since = dateTimeSince.Value,
                 Until = dateTimeUntil.Value,
-                Tag = (string)selectTag.SelectedValue,
+                Tag = (string)selectTag.SelectedItem,
                 Title = textTitle.Text
             });
         }

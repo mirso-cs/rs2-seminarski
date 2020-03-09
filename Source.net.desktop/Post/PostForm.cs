@@ -1,5 +1,6 @@
 ﻿using Source.net.desktop.Shared;
 using Source.net.infrastructure.Dtos;
+using Source.net.infrastructure.Enums;
 using Source.net.infrastructure.Views;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace Source.net.desktop.Post
         private readonly int? postId;
         private readonly HttpClient postHttp = new HttpClient("post");
         private readonly HttpClient categoryHttp = new HttpClient("category");
+        private readonly ImageEncoder imageEncoder = new Base64ImageEncoder();
 
         public PostForm(int? id)
         {
@@ -28,7 +30,7 @@ namespace Source.net.desktop.Post
 
         private async void PostForm_Load(object sender, EventArgs e)
         {
-            cbxPublished.Visible = HttpClient.RoleId != infrastructure.Enums.Role.USER;
+            cbxPublished.Visible = HttpClient.RoleId != Role.USER && postId.HasValue;
 
             var categories = await categoryHttp.Get<List<CategoryView>>();
             foreach (var item in categories)
@@ -56,12 +58,7 @@ namespace Source.net.desktop.Post
 
                 if (!string.IsNullOrWhiteSpace(post.Thumbnail))
                 {
-
-                    var pic = Convert.FromBase64String(post.Thumbnail);
-                    using (MemoryStream ms = new MemoryStream(pic))
-                    {
-                        thumbnail.Image = Image.FromStream(ms);
-                    }
+                    thumbnail.Image = imageEncoder.Decode(post.Thumbnail);
                 }
             }
 
@@ -69,47 +66,49 @@ namespace Source.net.desktop.Post
 
         private async void submitButton_Click(object sender, EventArgs e)
         {
-            var base64Image = "";
-            using (MemoryStream memoryStream = new MemoryStream())
+            try
             {
-                thumbnail.Image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
-                byte[] imageBytes = memoryStream.ToArray();
-                base64Image = Convert.ToBase64String(imageBytes);
-            }
 
-            if (postId.HasValue)
-            {
-                var updatePostDto = new UpdatePostDto()
+                var base64Image = thumbnail.Image != null ? imageEncoder.Encode(thumbnail.Image) : "";
+
+                if (postId.HasValue)
                 {
-                    CategoryId = ((CategoryView)selectCategory.SelectedItem).id,
-                    Content = textContent.Text,
-                    Subtitle = textSubtitle.Text,
-                    Title = textTitle.Text,
-                    Tags = textTags.Text.Split(','),
-                    Thumbnail = base64Image,
-                    Published = cbxPublished.Checked
-                };
+                    var updatePostDto = new UpdatePostDto()
+                    {
+                        CategoryId = ((CategoryView)selectCategory.SelectedItem).id,
+                        Content = textContent.Text,
+                        Subtitle = textSubtitle.Text,
+                        Title = textTitle.Text,
+                        Tags = textTags.Text.Split(','),
+                        Thumbnail = base64Image,
+                        Published = cbxPublished.Checked
+                    };
 
-                await postHttp.Update<PostView>(postId, updatePostDto);
-                MessageBox.Show("Post updated.");
-            }
-            else
-            {
-                var createPostDto = new CreatePostDto()
+                    await postHttp.Update<PostView>(postId, updatePostDto);
+                    MessageBox.Show("Post updated.");
+                }
+                else
                 {
-                    CategoryId = ((CategoryView)selectCategory.SelectedItem).id,
-                    Content = textContent.Text,
-                    Subtitle = textSubtitle.Text,
-                    Title = textTitle.Text,
-                    Tags = textTags.Text.Split(','),
-                    Thumbnail = base64Image
-                };
+                    var createPostDto = new CreatePostDto()
+                    {
+                        CategoryId = ((CategoryView)selectCategory.SelectedItem).id,
+                        Content = textContent.Text,
+                        Subtitle = textSubtitle.Text,
+                        Title = textTitle.Text,
+                        Tags = textTags.Text.Split(','),
+                        Thumbnail = base64Image
+                    };
 
-                await postHttp.Insert<PostView>(createPostDto);
-                MessageBox.Show("Post added.");
+                    await postHttp.Insert<PostView>(createPostDto);
+                    MessageBox.Show("Post added.");
+                }
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid parameters sent.");
             }
 
-            Close();
         }
 
         private void uploadButton_Click(object sender, EventArgs e)
@@ -126,6 +125,38 @@ namespace Source.net.desktop.Post
                 var bitmap = new Bitmap(image, thumbnail.Width, thumbnail.Height);
                 thumbnail.Image = bitmap;
             }
+        }
+
+        private void textTitle_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(
+                textTitle,
+                string.IsNullOrWhiteSpace(textTitle.Text) ? Properties.Resources.required : null
+            );
+        }
+
+        private void textSubtitle_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(
+                textSubtitle,
+                string.IsNullOrWhiteSpace(textSubtitle.Text) ? Properties.Resources.required : null
+            );
+        }
+
+        private void selectCategory_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(
+                selectCategory,
+                selectCategory.SelectedIndex == -1 ? Properties.Resources.required : null
+            );
+        }
+
+        private void textContent_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(
+                textContent,
+                string.IsNullOrWhiteSpace(textContent.Text) ? Properties.Resources.required : null
+            );
         }
     }
 }

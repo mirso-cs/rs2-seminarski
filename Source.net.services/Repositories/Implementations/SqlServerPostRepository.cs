@@ -68,7 +68,7 @@ namespace Source.net.services.Repositories.Implementations
 
             if (!string.IsNullOrWhiteSpace(filter.Category))
             {
-                query = query.Where(x => x.Category.Name == filter.Tag);
+                query = query.Where(x => x.Category.Name == filter.Category);
             }
 
             query = query.Where(x => x.CreatedAt.Date >= filter.Since.Date);

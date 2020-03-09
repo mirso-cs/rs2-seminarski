@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textTitle = new System.Windows.Forms.TextBox();
             this.textSubtitle = new System.Windows.Forms.TextBox();
             this.textContent = new System.Windows.Forms.RichTextBox();
@@ -45,7 +46,9 @@
             this.cbxPublished = new System.Windows.Forms.CheckBox();
             this.uploadButton = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.thumbnail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // textTitle
@@ -54,6 +57,7 @@
             this.textTitle.Name = "textTitle";
             this.textTitle.Size = new System.Drawing.Size(452, 22);
             this.textTitle.TabIndex = 0;
+            this.textTitle.Validating += new System.ComponentModel.CancelEventHandler(this.textTitle_Validating);
             // 
             // textSubtitle
             // 
@@ -61,6 +65,7 @@
             this.textSubtitle.Name = "textSubtitle";
             this.textSubtitle.Size = new System.Drawing.Size(452, 22);
             this.textSubtitle.TabIndex = 1;
+            this.textSubtitle.Validating += new System.ComponentModel.CancelEventHandler(this.textSubtitle_Validating);
             // 
             // textContent
             // 
@@ -69,6 +74,7 @@
             this.textContent.Size = new System.Drawing.Size(942, 463);
             this.textContent.TabIndex = 2;
             this.textContent.Text = "";
+            this.textContent.Validating += new System.ComponentModel.CancelEventHandler(this.textContent_Validating);
             // 
             // thumbnail
             // 
@@ -86,6 +92,7 @@
             this.selectCategory.Name = "selectCategory";
             this.selectCategory.Size = new System.Drawing.Size(452, 24);
             this.selectCategory.TabIndex = 4;
+            this.selectCategory.Validating += new System.ComponentModel.CancelEventHandler(this.selectCategory_Validating);
             // 
             // textTags
             // 
@@ -188,6 +195,10 @@
             this.uploadButton.UseVisualStyleBackColor = true;
             this.uploadButton.Click += new System.EventHandler(this.uploadButton_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // PostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -213,6 +224,7 @@
             this.Text = "Post";
             this.Load += new System.EventHandler(this.PostForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.thumbnail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +249,6 @@
         private System.Windows.Forms.CheckBox cbxPublished;
         private System.Windows.Forms.Button uploadButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
