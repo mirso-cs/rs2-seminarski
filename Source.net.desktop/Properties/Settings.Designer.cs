@@ -25,7 +25,7 @@ namespace Source.net.desktop.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44345/api")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:51185/api")]
         public string baseUrl {
             get {
                 return ((string)(this["baseUrl"]));
