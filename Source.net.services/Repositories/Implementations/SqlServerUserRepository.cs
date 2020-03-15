@@ -76,5 +76,20 @@ namespace Source.net.services.Repositories.Implementations
 
             return query.ToList();
         }
+
+        public User UpdatePackage(int id)
+        {
+            var user = Get(id);
+
+            if (user is null)
+            {
+                return null;
+            }
+
+            user.Package = infrastructure.Enums.Package.PREMIUM;
+            Update(user);
+            
+            return user;
+        }
     }
 }

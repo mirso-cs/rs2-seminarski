@@ -1,4 +1,5 @@
-﻿using Source.net.infrastructure.SearchFilters;
+﻿using Source.net.infrastructure.Enums;
+using Source.net.infrastructure.SearchFilters;
 using Source.net.infrastructure.Views;
 using Source.net.mobile.Services;
 using Source.net.mobile.ViewModels;
@@ -37,6 +38,14 @@ namespace Source.net.mobile.Views
             {
                 return;
             }
+
+            if (PostHttpClient.ReadPosts >= 10 && HttpClient.Package == Package.NONE)
+            {
+                await Navigation.PushAsync(new Payment());
+                return;
+            }
+
+            PostHttpClient.ReadPosts++;
 
             var post = await http.GetById<PostView>((e.Item as PostGridItem).Id);
 

@@ -9,6 +9,7 @@ C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\ob
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.ComponentModel.EventBasedAsync.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.ComponentModel.Primitives.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.ComponentModel.TypeConverter.SR.resw
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Configuration.ConfigurationManager.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Console.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Data.Common.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Data.SqlClient.SR.resw
@@ -30,6 +31,7 @@ C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\ob
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Linq.Parallel.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Linq.Queryable.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Linq.SR.resw
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Memory.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Net.Http.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Net.HttpListener.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Net.Mail.SR.resw
@@ -73,7 +75,9 @@ C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\ob
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Security.Cryptography.Csp.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Security.Cryptography.Encoding.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Security.Cryptography.Primitives.SR.resw
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Security.Cryptography.ProtectedData.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Security.Cryptography.X509Certificates.SR.resw
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Security.Permissions.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Security.Principal.Windows.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Text.Encoding.CodePages.SR.resw
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Text.RegularExpressions.SR.resw

@@ -51,9 +51,10 @@ namespace Source.net.mobile.ViewModels
                 HttpClient.Token = user.Token;
                 HttpClient.RoleId = user.RoleId;
                 HttpClient.UserId = user.Id;
+                HttpClient.Package = user.Package;
                 Application.Current.MainPage = new MainPage();
             }
-            catch (Exception ex)
+            catch 
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Invalid credentials", "OK");
             }

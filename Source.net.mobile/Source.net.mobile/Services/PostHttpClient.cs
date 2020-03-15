@@ -11,8 +11,9 @@ namespace Source.net.mobile.Services
 {
     public class PostHttpClient: HttpClient
     {
-        public PostHttpClient(string path):base(path) {
-        }
+        public static int ReadPosts { get; set; } = 0;
+
+        public PostHttpClient(string path):base(path) {}
 
         public async Task<IEnumerable<PostView>> GetAll(object filters = null)
         {

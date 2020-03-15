@@ -12,6 +12,7 @@ namespace Source.net.services.Services.Interfaces
         UserView UpdatePassword(int userId, UpdatePasswordDto dto);
         UserView UpdateRole(int userId, UpdateRoleDto dto);
         UserView ActivateUser(int userId);
+        UserView UpdatePackage(int userId);
         bool hasPermissions(int id);
     }
 }

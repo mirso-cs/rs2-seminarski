@@ -14,6 +14,7 @@ namespace Source.net.infrastructure.Entities
         public string Password { get; set; }
         public string Token { get; set; }
         public Role Role { get; set; }
+        public Package Package { get; set; } = Package.NONE;
         public bool Active { get; set; } = true;
     }
 }

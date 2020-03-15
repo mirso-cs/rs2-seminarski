@@ -318,3 +318,13 @@ C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\ob
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\.winmd_cache\$Microsoft.Graphics.Canvas.winmd_636160679180000000.json
 C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636758516200000000.json
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\Stripe.net.dll
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\Stripe.net.pdb
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\System.Memory.dll
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\System.Security.Permissions.dll
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Configuration.ConfigurationManager.SR.resw
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Memory.SR.resw
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Security.Cryptography.ProtectedData.SR.resw
+C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\obj\x86\Debug\FxResources.System.Security.Permissions.SR.resw

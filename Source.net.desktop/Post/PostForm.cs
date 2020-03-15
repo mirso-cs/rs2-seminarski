@@ -104,7 +104,7 @@ namespace Source.net.desktop.Post
                 }
                 Close();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Invalid parameters sent.");
             }

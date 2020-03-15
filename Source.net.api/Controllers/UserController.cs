@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using Source.net.infrastructure.SearchFilters;
+using Stripe;
+using System;
+using Source.net.api.Utils.HttpContext;
 
 namespace Source.net.api.Controllers
 {
@@ -18,11 +21,13 @@ namespace Source.net.api.Controllers
     {
         private readonly AuthenticationService _authService;
         private readonly UserService _userService;
+        private readonly HttpContextExtensible _httpContext;
 
-        public UserController(AuthenticationService authService, UserService userService)
+        public UserController(AuthenticationService authService, UserService userService, HttpContextExtensible httpContext)
         {
             _authService = authService;
             _userService = userService;
+            _httpContext = httpContext;
         }
 
         [HttpGet]
@@ -157,6 +162,45 @@ namespace Source.net.api.Controllers
             }
 
             return _userService.Delete(userId);
+        }
+
+        [HttpPost]
+        [Route("package")]
+        public UserView UpdatePackage([FromBody]PaymentDto payment)
+        {
+            var user = _httpContext.getUserFromClaims(User.Claims);
+            
+            if(user is null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            var charge = new ChargeCreateOptions()
+            {
+                Amount = 1000, 
+                Currency = "EUR",
+                Description = "Update user package",
+                Source = payment.Token
+            };
+
+            var service = new ChargeService();
+
+            try
+            {
+                var response = service.Create(charge);
+
+                if(response.Status == "succeeded")
+                {
+                    var updatedUser = _userService.UpdatePackage(user.id);
+                    return updatedUser;
+                }
+
+                throw new Exception("Unable to pay.");
+            }
+            catch (StripeException ex)
+            {
+                throw ex;
+            }
         }
 
     }

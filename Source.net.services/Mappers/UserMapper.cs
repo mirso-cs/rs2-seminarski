@@ -22,7 +22,8 @@ namespace Source.net.services.Mappers
                 Email = dto.Email,
                 Password = dto.Password,
                 Username = dto.Username,
-                Role = Role.USER
+                Role = Role.USER,
+                Package = Package.NONE
             };
         }
         public User To(UpdateUserDto dto, User entity)
@@ -46,6 +47,7 @@ namespace Source.net.services.Mappers
                 Email = view.Email,
                 Name = view.Name,
                 Role = view.RoleId,
+                Package = view.Package,
                 Surname = view.Surname,
                 Username = view.Username,
                 Password = "HIDDEN"
@@ -61,6 +63,7 @@ namespace Source.net.services.Mappers
                 Name = entity.Name,
                 Surname = entity.Surname,
                 Username = entity.Username,
+                Package = entity.Package,
                 RoleId = entity.Role,
                 Active = entity.Active
             };

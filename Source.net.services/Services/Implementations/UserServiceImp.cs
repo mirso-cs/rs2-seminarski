@@ -104,5 +104,16 @@ namespace Source.net.services.Services.Implementations
             
             return id == user.id && user.Active;
         }
+
+        public UserView UpdatePackage(int userId)
+        {
+            var user = Get(userId);
+            if(user is null)
+            {
+                throw new System.Exception("Unable to find user.");
+            }
+
+            return _mapper.From(_repo.UpdatePackage(userId));
+        }
     }
 }

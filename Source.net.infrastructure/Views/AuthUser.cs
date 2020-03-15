@@ -11,6 +11,7 @@ namespace Source.net.infrastructure.Views
         public string Username { get; set; }
         public string Token { get; set; }
         public Role RoleId { get; set; }
+        public Package Package { get; set; }
         public string Role { get; set; }
     }
 }

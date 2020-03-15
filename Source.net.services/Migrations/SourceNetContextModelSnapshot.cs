@@ -153,6 +153,8 @@ namespace Source.net.services.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("Package");
+
                     b.Property<string>("Password");
 
                     b.Property<int>("Role");

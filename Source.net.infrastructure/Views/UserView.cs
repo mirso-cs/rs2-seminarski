@@ -12,6 +12,7 @@ namespace Source.net.infrastructure.Views
         public string Role { get; set; }
         public bool Active{ get; set; }
         public Role RoleId { get; set; }
+        public Package Package { get; set; }
 
         public bool isAdmin()
         {

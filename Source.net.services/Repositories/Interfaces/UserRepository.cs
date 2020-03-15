@@ -10,5 +10,6 @@ namespace Source.net.services.Repositories.Interfaces
         User GetByEmail(string email);
         User SetToken(string username, string token);
         User ActivateUser(int id);
+        User UpdatePackage(int id);
     }
 }

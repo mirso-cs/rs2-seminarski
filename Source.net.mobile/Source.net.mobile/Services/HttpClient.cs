@@ -20,6 +20,7 @@ namespace Source.net.mobile.Services
         public string Path { get; }
         public static string Token { get; set; }
         public static Role RoleId { get; set; }
+        public static Package Package { get; set; }
         public static int UserId { get; set; }
 
         public HttpClient(string path) {

@@ -23,7 +23,7 @@
                     LineBreakMode="NoWrap" 
                     Style="{DynamicResource ListItemTextStyle}" 
                     FontSize="16"></Label>
-            <ListView ItemsSource="{Binding SuggestedPosts}" ItemTapped="ListView_ItemTapped">
+            <ListView ItemsSource="{Binding PopularPosts}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

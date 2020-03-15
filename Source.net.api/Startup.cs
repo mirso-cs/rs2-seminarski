@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.Swagger;
 using Source.net.api.Utils.HttpContext;
+using Stripe;
 
 namespace Source.net.api
 {
@@ -156,7 +157,7 @@ namespace Source.net.api
                 app.UseHsts();
             }
 
-
+            StripeConfiguration.ApiKey = "sk_test_NvDswvmvqKh4CF1G6uaIsWvP00h8KtZ7ES";
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             //app.UseHttpsRedirection();

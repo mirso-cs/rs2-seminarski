@@ -179,6 +179,10 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[35.6.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.3.1, )"
