@@ -17,6 +17,7 @@ namespace Source.net.mobile.ViewModels
         public ICommand LoadCommand { get; set; }
         public ObservableCollection<PostGridItem> Posts { get; set; } = new ObservableCollection<PostGridItem>();
         public ObservableCollection<PostGridItem> PopularPosts { get; set; } = new ObservableCollection<PostGridItem>();
+        public ObservableCollection<PostGridItem> SuggestedPosts { get; set; } = new ObservableCollection<PostGridItem>();
         public PostsViewModel()
         {
             LoadCommand = new Command(async () => { await Load(); });
@@ -38,6 +39,12 @@ namespace Source.net.mobile.ViewModels
                 PopularPosts.Add(mapper.from(p));
             }
 
+            var suggestedPosts = await http.GetSuggested();
+            SuggestedPosts.Clear();
+            foreach (var p in suggestedPosts)
+            {
+                SuggestedPosts.Add(mapper.from(p));
+            }
         }
     }
 }

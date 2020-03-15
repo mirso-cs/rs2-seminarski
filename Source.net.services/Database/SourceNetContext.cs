@@ -11,6 +11,8 @@ namespace Source.net.services.Database
         }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserPostCategory> UserPostCategories { get; set; }
+        public virtual DbSet<UserPostTag> UserPostTags { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }

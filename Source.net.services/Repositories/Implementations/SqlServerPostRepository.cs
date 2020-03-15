@@ -11,9 +11,14 @@ namespace Source.net.services.Repositories.Implementations
 {
     public class SqlServerPostRepository : MutatorRepository<Post>, PostRepository
     {
-        public SqlServerPostRepository(SourceNetContext db) :
+        private UserPostCategoryRepository _userPostCategories;
+        private UserPostTagRepository _userPostTags;
+
+        public SqlServerPostRepository(SourceNetContext db, UserPostCategoryRepository userPostCategories, UserPostTagRepository userPostTags) :
             base(db)
         {
+            _userPostTags = userPostTags;
+            _userPostCategories = userPostCategories;
         }
 
         public override Post Get(int id)
@@ -154,5 +159,53 @@ namespace Source.net.services.Repositories.Implementations
                 .Average(r => (int?)r.rating) ?? 0)
                .ToList();
         }
+
+        public IEnumerable<Post> GetSuggested(UserPostFilters filters)
+        {
+            var categories = _userPostCategories.GetAggregate(filters);
+            var tags = _userPostTags.GetAggregate(filters);
+
+            var useCategories = categories.Count() > 5 ? categories.Take(5) : categories;
+            var useTags = tags.Count() > 20 ? tags.Take(20) : tags;
+
+            List<int> categoryIds = new List<int>();
+            foreach (var item in useCategories)
+            {
+                categoryIds.Add(item.CategoryId);
+            }
+
+            List<int> tagIds = new List<int>();
+            foreach (var item in useTags)
+            {
+                tagIds.Add(item.TagId);
+            }
+
+            var posts = _db.Posts
+               .Include(p => p.User)
+               .Include(p => p.Category)
+               .Include(p => p.AssociatedTags)
+               .ThenInclude(pt => pt.Tag)
+               .Where(x => categoryIds.Contains(x.CategoryId))
+               .ToList();
+
+            var usedIds = new List<int>();
+            foreach(var item in posts)
+            {
+                usedIds.Add(item.id);
+            }
+
+            var tagPosts = _db.Posts
+               .Include(p => p.User)
+               .Include(p => p.Category)
+               .Include(p => p.AssociatedTags)
+               .ThenInclude(pt => pt.Tag)
+               .Where(x => !usedIds.Contains(x.id))
+               .Where(x => x.AssociatedTags.All(p => tagIds.Contains(p.TagId)))
+               .ToList();
+
+            posts.AddRange(tagPosts);
+
+            return posts;
+         }
     }
 }

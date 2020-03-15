@@ -19,47 +19,51 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Popular posts" 
+            <StackLayout>
+                <Label Text="Suggested posts" 
                     LineBreakMode="NoWrap" 
                     Style="{DynamicResource ListItemTextStyle}" 
                     FontSize="16"></Label>
-            <ListView ItemsSource="{Binding PopularPosts}" ItemTapped="ListView_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal">
-                                <StackLayout>
-                                    <Image Source="{Binding Thumbnail, Converter={StaticResource imgConv}}"></Image>
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Title}" 
+                <ListView ItemsSource="{Binding SuggestedPosts}" ItemTapped="ListView_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10" Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Image Source="{Binding Thumbnail, Converter={StaticResource imgConv}}"></Image>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Title}" 
                                             LineBreakMode="NoWrap" 
                                             Style="{DynamicResource ListItemTextStyle}" 
                                             FontSize="16" />
-                                    <Label Text="{Binding Subtitle}" 
+                                        <Label Text="{Binding Subtitle}" 
                                             LineBreakMode="NoWrap" 
                                             Style="{DynamicResource ListItemTextStyle}" 
                                             FontSize="14" />
-                                    <Label Text="{Binding Author}" 
+                                        <Label Text="{Binding Author}" 
                                             LineBreakMode="NoWrap" 
                                             Style="{DynamicResource ListItemTextStyle}" 
                                             FontSize="14" />
-                                    <Label Text="{Binding Category}" 
+                                        <Label Text="{Binding Category}" 
                                             LineBreakMode="NoWrap"
                                             Style="{DynamicResource ListItemDetailTextStyle}"
                                             FontSize="14" />
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
 
-            <Label Text="Latest posts" 
+
+            <StackLayout>
+                <Label Text="Popular posts" 
                     LineBreakMode="NoWrap" 
                     Style="{DynamicResource ListItemTextStyle}" 
                     FontSize="16"></Label>
-            <ListView ItemsSource="{Binding Posts}" ItemTapped="ListView_ItemTapped">
+                <ListView ItemsSource="{Binding PopularPosts}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -90,6 +94,46 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Latest posts" 
+                    LineBreakMode="NoWrap" 
+                    Style="{DynamicResource ListItemTextStyle}" 
+                    FontSize="16"></Label>
+                <ListView ItemsSource="{Binding Posts}" ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout>
+                                    <Image Source="{Binding Thumbnail, Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Title}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="16" />
+                                    <Label Text="{Binding Subtitle}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="14" />
+                                    <Label Text="{Binding Author}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="14" />
+                                    <Label Text="{Binding Category}" 
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}"
+                                            FontSize="14" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

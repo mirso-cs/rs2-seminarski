@@ -35,5 +35,12 @@ namespace Source.net.mobile.Services
                 .GetJsonAsync<IEnumerable<PostView>>();
         }
 
+        public async Task<IEnumerable<PostView>> GetSuggested()
+        {
+            return await $"{baseUrl}/{Path}/popular?UserId={HttpClient.UserId}" 
+                .WithOAuthBearerToken(Token)
+                .GetJsonAsync<IEnumerable<PostView>>();
+        }
+
     }
 }

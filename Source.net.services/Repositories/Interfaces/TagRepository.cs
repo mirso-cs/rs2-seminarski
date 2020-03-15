@@ -5,7 +5,6 @@ namespace Source.net.services.Repositories.Interfaces
 {
     public interface TagRepository : Repository<Tag, TagFilters>
     {
-
         Tag GetByName(string name);
     }
 }

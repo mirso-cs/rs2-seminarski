@@ -93,6 +93,19 @@ namespace Source.net.services.Services.Implementations
             return views;
         }
 
+        public IEnumerable<PostView> GetSuggested(UserPostFilters filters)
+        {
+            List<PostView> views = new List<PostView>();
+            var entities = _repo.GetSuggested(filters);
+
+            foreach (var entity in entities)
+            {
+                views.Add(_mapper.From(entity));
+            }
+
+            return views;
+        }
+
         public override PostView Update(int id, UpdatePostDto dto)
         {
             var entity = _repo.Get(id);

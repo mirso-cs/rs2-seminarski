@@ -94,6 +94,8 @@ namespace Source.net.api
             services.AddScoped<PostTagRepository, SqlServerPostTagRepository>();
             services.AddScoped<Statistics, DashboardStatistics>();
             services.AddScoped<RatingRepository, SqlServerRatingRepository>();
+            services.AddScoped<UserPostCategoryRepository, SqlServerUserPostCategoryRepository>();
+            services.AddScoped<UserPostTagRepository, SqlServerUserPostTagRepository>();
 
             // Mappers
             services.AddSingleton<UserMapper>();

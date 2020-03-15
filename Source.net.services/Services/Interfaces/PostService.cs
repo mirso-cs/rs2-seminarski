@@ -12,6 +12,7 @@ namespace Source.net.services.Services.Interfaces
         PostView Add(CreatePostDto dto, int userId);
         IEnumerable<PostView> GetPopular();
         IEnumerable<PostView> GetLatest();
+        IEnumerable<PostView> GetSuggested(UserPostFilters filters);
         IEnumerable<PostView> GetAllForUser(int userId, PostFilters filters);
     }
 }

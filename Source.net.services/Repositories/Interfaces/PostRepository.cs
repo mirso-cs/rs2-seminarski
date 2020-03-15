@@ -9,5 +9,6 @@ namespace Source.net.services.Repositories.Interfaces
         IEnumerable<Post> GetForUser(int userId, PostFilters filters);
         IEnumerable<Post> GetPopular();
         IEnumerable<Post> GetLatest();
+        IEnumerable<Post> GetSuggested(UserPostFilters filters);
     }
 }
