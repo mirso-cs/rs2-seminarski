@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T13:53:10.659</Modified>
+      <Modified>2020-03-15T08:20:45.316</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\Source.net.mobile.UWP.exe">
       <PackagePath>entrypoint\Source.net.mobile.UWP.exe</PackagePath>
-      <Modified>2020-03-14T13:53:08.830</Modified>
+      <Modified>2020-03-15T08:20:43.560</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\.nuget\packages\flurl\2.8.2\lib\netstandard2.0\Flurl.dll">
       <PackagePath>Flurl.dll</PackagePath>
@@ -736,11 +736,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile\bin\Debug\netstandard2.0\Source.net.mobile.dll">
       <PackagePath>Source.net.mobile.dll</PackagePath>
-      <Modified>2020-03-14T13:52:59.741</Modified>
+      <Modified>2020-03-15T08:26:20.156</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile\bin\Debug\netstandard2.0\Source.net.infrastructure.dll">
       <PackagePath>Source.net.infrastructure.dll</PackagePath>
-      <Modified>2020-03-14T12:33:51.246</Modified>
+      <Modified>2020-03-15T08:00:57.757</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\.nuget\packages\win2d.uwp\1.20.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
@@ -756,174 +756,174 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2020-03-14T12:30:45.397</Modified>
+      <Modified>2020-03-14T14:14:08.570</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.451</Modified>
+      <Modified>2020-03-14T14:14:08.552</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\LargeTile.scale-200.png">
       <PackagePath>Assets\LargeTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.454</Modified>
+      <Modified>2020-03-14T14:14:08.552</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\LargeTile.scale-400.png">
       <PackagePath>Assets\LargeTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.465</Modified>
+      <Modified>2020-03-14T14:14:08.553</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.467</Modified>
+      <Modified>2020-03-14T14:14:08.554</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\SmallTile.scale-200.png">
       <PackagePath>Assets\SmallTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.470</Modified>
+      <Modified>2020-03-14T14:14:08.554</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\SmallTile.scale-400.png">
       <PackagePath>Assets\SmallTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.472</Modified>
+      <Modified>2020-03-14T14:14:08.555</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.476</Modified>
+      <Modified>2020-03-14T14:14:08.555</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.480</Modified>
+      <Modified>2020-03-14T14:14:08.556</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\SplashScreen.scale-400.png">
       <PackagePath>Assets\SplashScreen.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.717</Modified>
+      <Modified>2020-03-14T14:14:08.557</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square150x150Logo.scale-100.png">
       <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.721</Modified>
+      <Modified>2020-03-14T14:14:08.557</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.725</Modified>
+      <Modified>2020-03-14T14:14:08.558</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square150x150Logo.scale-400.png">
       <PackagePath>Assets\Square150x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.731</Modified>
+      <Modified>2020-03-14T14:14:08.559</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.742</Modified>
+      <Modified>2020-03-14T14:14:08.559</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.756</Modified>
+      <Modified>2020-03-14T14:14:08.560</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.761</Modified>
+      <Modified>2020-03-14T14:14:08.560</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.774</Modified>
+      <Modified>2020-03-14T14:14:08.561</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:44.778</Modified>
+      <Modified>2020-03-14T14:14:08.562</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square44x44Logo.scale-400.png">
       <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:45.112</Modified>
+      <Modified>2020-03-14T14:14:08.562</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square44x44Logo.targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:45.122</Modified>
+      <Modified>2020-03-14T14:14:08.563</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square44x44Logo.targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:45.126</Modified>
+      <Modified>2020-03-14T14:14:08.563</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Square44x44Logo.targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:45.129</Modified>
+      <Modified>2020-03-14T14:14:08.564</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:45.136</Modified>
+      <Modified>2020-03-14T14:14:08.564</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\StoreLogo.scale-200.png">
       <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:45.140</Modified>
+      <Modified>2020-03-14T14:14:08.565</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\StoreLogo.scale-400.png">
       <PackagePath>Assets\StoreLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:45.144</Modified>
+      <Modified>2020-03-14T14:14:08.566</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Wide310x150Logo.scale-100.png">
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:45.157</Modified>
+      <Modified>2020-03-14T14:14:08.566</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:45.380</Modified>
+      <Modified>2020-03-14T14:14:08.567</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-14T12:30:45.385</Modified>
+      <Modified>2020-03-14T14:14:08.567</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\xamarin_logo.png">
       <PackagePath>xamarin_logo.png</PackagePath>
-      <Modified>2020-03-14T12:30:46.871</Modified>
+      <Modified>2020-03-14T14:14:09.382</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\add.png">
       <PackagePath>add.png</PackagePath>
-      <Modified>2020-03-14T12:30:46.806</Modified>
+      <Modified>2020-03-14T14:14:08.572</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\save.png">
       <PackagePath>save.png</PackagePath>
-      <Modified>2020-03-14T12:30:46.866</Modified>
+      <Modified>2020-03-14T14:14:09.382</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\cancel.png">
       <PackagePath>cancel.png</PackagePath>
-      <Modified>2020-03-14T12:30:46.810</Modified>
+      <Modified>2020-03-14T14:14:09.276</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\Source.net.mobile.UWP.xr.xml">
       <PackagePath>Source.net.mobile.UWP.xr.xml</PackagePath>
-      <Modified>2020-03-14T12:38:34.572</Modified>
+      <Modified>2020-03-14T14:14:09.368</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\Microsoft.UI.Xaml\DensityStyles\Compact.xbf">
       <PackagePath>Microsoft.UI.Xaml\DensityStyles\Compact.xbf</PackagePath>
-      <Modified>2020-03-14T13:53:08.586</Modified>
+      <Modified>2020-03-15T08:20:43.355</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-03-14T13:53:08.586</Modified>
+      <Modified>2020-03-15T08:20:43.355</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-03-14T13:53:08.586</Modified>
+      <Modified>2020-03-15T08:20:43.355</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.17763.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -939,11 +939,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-03-14T13:27:54.305</Modified>
+      <Modified>2020-03-15T07:21:44.400</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miki\source\repos\Source.net\Source.net.mobile\Source.net.mobile.UWP\bin\x86\Debug\Core\Source.net.mobile.UWP.exe">
       <PackagePath>Source.net.mobile.UWP.exe</PackagePath>
-      <Modified>2020-03-14T13:53:10.647</Modified>
+      <Modified>2020-03-15T08:20:45.305</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

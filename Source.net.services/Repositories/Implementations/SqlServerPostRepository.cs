@@ -128,5 +128,31 @@ namespace Source.net.services.Repositories.Implementations
 
             return query.ToList();
         }
+
+        public IEnumerable<Post> GetLatest()
+        {
+            return _db.Posts
+                .Include(p => p.User)
+                .Include(p => p.Category)
+                .Include(p => p.AssociatedTags)
+                .ThenInclude(pt => pt.Tag)
+                .Where(x => x.Published)
+                .OrderByDescending(x => x.CreatedAt)
+                .ToList();
+        }
+
+        public IEnumerable<Post> GetPopular()
+        {
+           return _db.Posts
+               .Include(p => p.User)
+               .Include(p => p.Category)
+               .Include(p => p.AssociatedTags)
+               .ThenInclude(pt => pt.Tag)
+               .Where(x => x.Published)
+               .OrderByDescending(x => _db.Ratings
+                .Where(r => r.PostId == x.id)
+                .Average(r => (int?)r.rating) ?? 0)
+               .ToList();
+        }
     }
 }

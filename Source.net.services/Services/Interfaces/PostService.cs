@@ -10,6 +10,8 @@ namespace Source.net.services.Services.Interfaces
         BaseService<Post, CreatePostDto, UpdatePostDto, PostView, PostFilters>
     {
         PostView Add(CreatePostDto dto, int userId);
+        IEnumerable<PostView> GetPopular();
+        IEnumerable<PostView> GetLatest();
         IEnumerable<PostView> GetAllForUser(int userId, PostFilters filters);
     }
 }

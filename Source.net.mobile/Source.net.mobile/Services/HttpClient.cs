@@ -11,11 +11,11 @@ namespace Source.net.mobile.Services
     public class HttpClient
     {
 #if DEBUG
-        private readonly string baseUrl = "http://localhost:51185/api";
+        protected readonly string baseUrl = "http://localhost:51185/api";
 #endif
 
 #if RELEASE
-        private readonly string baseUrl = "https://api.site.com";
+        protected readonly string baseUrl = "https://api.site.com";
 #endif
         public string Path { get; }
         public static string Token { get; set; }

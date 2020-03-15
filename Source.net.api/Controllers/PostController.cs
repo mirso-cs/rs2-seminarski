@@ -46,6 +46,19 @@ namespace Source.net.api.Controllers
             return ((PostService)_crudService).GetAllForUser(user.id, filter);
         }
 
+        [HttpGet("latest")]
+        public IEnumerable<PostView> GetAll()
+        {
+            return ((PostService)_crudService).GetLatest();
+        }
+
+        [HttpGet("popular")]
+        public IEnumerable<PostView> GetPopular()
+        {
+            return ((PostService)_crudService).GetPopular();
+        }
+
+
         [HttpPost]
         [Authorize]
         public override PostView Add(CreatePostDto dto)

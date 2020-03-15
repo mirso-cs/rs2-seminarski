@@ -6,8 +6,7 @@ namespace Source.net.mobile.Models
 {
     public enum MenuItemType
     {
-        Browse,
-        About
+        Posts
     }
     public class HomeMenuItem
     {

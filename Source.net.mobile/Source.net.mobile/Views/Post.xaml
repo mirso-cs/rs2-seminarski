@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Source.net.mobile.ViewModels"
+             xmlns:converters="clr-namespace:Source.net.mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="Source.net.mobile.Views.Post">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout>
+                <Image Source="{Binding Post.Thumbnail, Converter={StaticResource imgConv}}"></Image>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Padding="10">
+                <Label Text="{Binding Post.Title}" 
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemTextStyle}" 
+                        FontSize="16" />
+                <Label Text="{Binding Title}" 
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemTextStyle}" 
+                        FontSize="14" />
+                <Label Text="{Binding Post.Author}" 
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemTextStyle}" 
+                        FontSize="12" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding Post.Category}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="12" />
+                    <Label Text="{Binding Post.Tags}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="12" />
+                </StackLayout>
+
+                <StackLayout >
+                    <Label Text="{Binding Post.Content}" 
+                            LineBreakMode="WordWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="14" />
+                </StackLayout>
+
+
+                <StackLayout>
+                    <Label Text="{Binding Post.Content}" 
+                            LineBreakMode="WordWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="14" />
+                </StackLayout>
+
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Leave a rating: " 
+                            LineBreakMode="WordWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="14" />
+                        <Label Text="{Binding Rating}" 
+                            LineBreakMode="WordWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="14" />
+                    </StackLayout>
+
+                    <Slider Maximum="5" 
+                            ValueChanged="Slider_ValueChanged"
+                            Minimum="0"
+                            Value="0"></Slider>
+                    <Button Command="{Binding RateCommand}" Text="Rate"></Button>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Suggested posts" 
+                            LineBreakMode="WordWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="14" />
+                    <StackLayout>
+                        <ListView ItemsSource="{Binding SuggestedPosts}" ItemTapped="ListView_ItemTapped">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="10" Orientation="Horizontal">
+                                            <StackLayout>
+                                                <Image Source="{Binding Thumbnail, Converter={StaticResource imgConv}}"></Image>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical">
+                                                <Label Text="{Binding Title}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="16" />
+                                                <Label Text="{Binding Subtitle}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="14" />
+                                                <Label Text="{Binding Author}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="14" />
+                                                <Label Text="{Binding Category}" 
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}"
+                                            FontSize="14" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

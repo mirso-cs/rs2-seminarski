@@ -83,6 +83,7 @@ namespace Source.net.api
             services.AddScoped<UserService, UserServiceImp>();
             services.AddScoped<PostService, PostServiceImp>();
             services.AddScoped<TagService, TagServiceImp>();
+            services.AddScoped<RatingService, RatingServiceImp>();
 
             // Repositories
             services.AddScoped<UserRepository, SqlServerUserRepository>();
@@ -91,6 +92,7 @@ namespace Source.net.api
             services.AddScoped<TagRepository, SqlServerTagRepository>();
             services.AddScoped<PostTagRepository, SqlServerPostTagRepository>();
             services.AddScoped<Statistics, DashboardStatistics>();
+            services.AddScoped<RatingRepository, SqlServerRatingRepository>();
 
             // Mappers
             services.AddSingleton<UserMapper>();
@@ -98,6 +100,7 @@ namespace Source.net.api
             services.AddSingleton<RoleMapper>();
             services.AddSingleton<PostMapper>();
             services.AddSingleton<TagMapper>();
+            services.AddSingleton<RatingMapper>();
 
 
             // Utils

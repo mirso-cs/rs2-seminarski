@@ -21,7 +21,6 @@ namespace Source.net.mobile.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -30,11 +29,8 @@ namespace Source.net.mobile.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                        break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    case (int)MenuItemType.Posts:
+                        MenuPages.Add(id, new NavigationPage(new Posts()));
                         break;
                 }
             }
