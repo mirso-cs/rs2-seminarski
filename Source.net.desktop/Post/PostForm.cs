@@ -26,6 +26,7 @@ namespace Source.net.desktop.Post
         {
             InitializeComponent();
             postId = id;
+            BtnDelete.Visible = postId.HasValue;
         }
 
         private async void PostForm_Load(object sender, EventArgs e)
@@ -157,6 +158,23 @@ namespace Source.net.desktop.Post
                 textContent,
                 string.IsNullOrWhiteSpace(textContent.Text) ? Properties.Resources.required : null
             );
+        }
+
+        private async void BtnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (postId.HasValue)
+                {
+                    await postHttp.Delete((int)postId);
+                    MessageBox.Show("Post Removed.");
+                }
+                Close();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Invalid parameters sent.");
+            }
         }
     }
 }

@@ -16,6 +16,11 @@ namespace Source.net.services.Mappers
 
         public PostView From(Post entity)
         {
+            if(entity is null)
+            {
+                return new PostView();
+            }
+
             return new PostView
             {
                 id = entity.id,
@@ -26,9 +31,9 @@ namespace Source.net.services.Mappers
                 Tags = mapTags(entity.AssociatedTags),
                 Subtitle = entity.Subtitle,
                 Thumbnail = entity.Thumbnail,
-                User = entity.User.Name + " " + entity.User.Surname,
+                User = entity.User is null ? "N/A" : entity.User.Name + " " + entity.User.Surname,
                 UserId = entity.UserId,
-                Category = entity.Category.Name,
+                Category = entity.Category is null ? "N/A" : entity.Category.Name,
                 CreatedAt = entity.CreatedAt
             };
         }

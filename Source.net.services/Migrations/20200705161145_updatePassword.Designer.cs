@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Source.net.services.Database;
 
 namespace Source.net.services.Migrations
 {
     [DbContext(typeof(SourceNetContext))]
-    partial class SourceNetContextModelSnapshot : ModelSnapshot
+    [Migration("20200705161145_updatePassword")]
+    partial class updatePassword
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

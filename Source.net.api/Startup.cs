@@ -106,8 +106,11 @@ namespace Source.net.api
             services.AddSingleton<RatingMapper>();
 
 
+
             // Utils
             services.AddScoped<HttpContextExtensible, HttpContextExtension>();
+            services.AddSingleton<PasswordCryptoService>();
+
 
             var contact = Configuration.GetSection("Swagger").GetSection("Contact");
             var license = Configuration.GetSection("Swagger").GetSection("License");
