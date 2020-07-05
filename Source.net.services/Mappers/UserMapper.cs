@@ -2,25 +2,32 @@
 using Source.net.infrastructure.Dtos;
 using Source.net.infrastructure.Views;
 using Source.net.infrastructure.Enums;
+using Source.net.services.Services.Implementations;
+using System.Resources;
 
 namespace Source.net.services.Mappers
 {
     public class UserMapper: Mapper<User, UserView, RegisterDto, UpdateUserDto>
     {
         private readonly RoleMapper _roleMapper;
-        public UserMapper(RoleMapper roleMapper)
+        private readonly PasswordCryptoService _crytpoService;
+        public UserMapper(RoleMapper roleMapper, PasswordCryptoService cryptoService)
         {
             _roleMapper = roleMapper;
+            _crytpoService = cryptoService;
         }
 
         public User To(RegisterDto dto)
         {
+            string salt = _crytpoService.GenerateSalt();
+            string hash = _crytpoService.GenerateHash(salt, dto.Password);
             return new User
             {
                 Name = dto.Name,
                 Surname = dto.Surname,
                 Email = dto.Email,
-                Password = dto.Password,
+                PasswordHash = hash,
+                PasswordSalt = salt,
                 Username = dto.Username,
                 Role = Role.USER,
                 Package = Package.NONE
@@ -50,7 +57,7 @@ namespace Source.net.services.Mappers
                 Package = view.Package,
                 Surname = view.Surname,
                 Username = view.Username,
-                Password = "HIDDEN"
+                PasswordHash = "HIDDEN"
             };
         }
         public UserView From(User entity)

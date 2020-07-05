@@ -27,13 +27,15 @@ namespace Source.net.api.Controllers
         private readonly HttpContextExtensible _httpContext;
         private readonly UserPostCategoryRepository _userPostCategories;
         private readonly UserPostTagRepository _userPostTags;
+        private readonly PostTagRepository _postTagRepository;
 
         public PostController(
             PostService service, 
             UserService userService, 
             HttpContextExtensible httpContext,
             UserPostCategoryRepository userPostCategories,
-            UserPostTagRepository userPostTags
+            UserPostTagRepository userPostTags,
+            PostTagRepository postTagRepository
             ) :
             base(service)
         {
@@ -41,6 +43,7 @@ namespace Source.net.api.Controllers
             _httpContext = httpContext;
             _userPostCategories = userPostCategories;
             _userPostTags = userPostTags;
+            _postTagRepository = postTagRepository;
         }
 
         [HttpGet]
@@ -149,12 +152,18 @@ namespace Source.net.api.Controllers
                 throw new BadRequestException("Not authorized for that action!");
             }
 
-            if(!postUser.isAdmin())
+            if(dto.Published && !user.isAdmin())
             {
                 dto.Published = false; // if user updates post unpublish it
             }
 
             return _crudService.Update(id, dto);
+        }
+
+        public override PostView Delete(int id)
+        {
+            _postTagRepository.RemoveForPost(id);
+            return base.Delete(id);
         }
     }
 }

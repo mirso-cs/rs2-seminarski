@@ -16,6 +16,11 @@ namespace Source.net.services.Mappers
 
         public TagView From(Tag entity)
         {
+            if(entity is null)
+            {
+                return new TagView();
+            }
+
             return new TagView
             {
                 Id = entity.id,

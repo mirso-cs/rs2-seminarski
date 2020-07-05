@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Source.net.services.Mappers;
+using Source.net.services.Services.Implementations;
 
 namespace Source.net.api.Security
 {
@@ -16,22 +17,34 @@ namespace Source.net.api.Security
         private readonly TokenManagement _tokenManagement;
         private readonly UserRepository _userRepo;
         private readonly RoleMapper _roleMapper;
+        private readonly PasswordCryptoService _cryptoService;
 
-        public JWTAuthenticationService(IOptions<TokenManagement> tokenManagement, UserRepository userRepo, RoleMapper roleMapper)
+
+        public JWTAuthenticationService(IOptions<TokenManagement> tokenManagement, UserRepository userRepo, RoleMapper roleMapper, PasswordCryptoService cryptoService)
         {
             _tokenManagement = tokenManagement.Value;
             _userRepo = userRepo;
             _roleMapper = roleMapper;
+            _cryptoService = cryptoService;
         }
 
         public bool IsAuthenticated(LoginDto request, out string token)
         {
             token = string.Empty;
             var user = _userRepo.GetUserByUsername(request.Username);
-            if (user is null || !user.Active || user.Password != request.Password)
+
+
+            if (user is null || !user.Active)
             {
                 return false;
             }
+            var newHash = _cryptoService.GenerateHash(user.PasswordSalt, request.Password);
+
+            if (newHash != user.PasswordHash)
+            {
+                return false;
+            }
+
 
             var claims = new[]
             {

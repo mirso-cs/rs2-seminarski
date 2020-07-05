@@ -22,10 +22,13 @@ namespace Source.net.services.Services.Implementations
         >,
         UserService
     {
+        private readonly PasswordCryptoService _crytpoService;
 
-        public UserServiceImp(UserMapper userMapper, UserRepository userRepository): 
+
+        public UserServiceImp(UserMapper userMapper, UserRepository userRepository, PasswordCryptoService crytpoService) : 
             base(userMapper, userRepository)
         {
+            _crytpoService = crytpoService;
         }
 
         public UserView GetByUsername(string username)
@@ -70,7 +73,10 @@ namespace Source.net.services.Services.Implementations
                 throw new BadRequestException("Passwords do not match.");
             }
             var user = _repo.Get(userId);
-            user.Password = dto.Password;
+            string salt = _crytpoService.GenerateSalt();
+            string hash = _crytpoService.GenerateHash(salt, dto.Password);
+            user.PasswordSalt = salt;
+            user.PasswordHash = hash;
             _repo.Update(user);
             return _mapper.From(user);
         }
